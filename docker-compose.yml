@@ -1,0 +1,49 @@
+version: '3.8'
+# MS Nginx para la conexion externa a los contenedores
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: nginx_new
+    ports:
+      - "8080:80"
+    volumes:
+      - ./src/:/var/www
+      - ./nginx_new/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - app
+      - db  
+# MS par la base de datos :PostgreSQL 
+  db:
+    image: postgres
+    container_name: postgresql_new
+    volumes:
+      - ./postgresql_new/data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: app-projection-social
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+# MS para la aplicacion Laravel 10
+  app:
+    container_name: app-projection-social
+    build: 
+      context: ./php
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/var/www
+    ports:
+      - "9000:9000"
+    working_dir: /var/www
+# Ms para la gestion visual de las bases de datos
+# PostgreSQL
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgAdmin_new
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
