@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('classroom_plan', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_course');
-            $table->unsignedBigInteger('id_profiles_competencies_ra');
+            $table->unsignedBigInteger('id_profile_competition_ra');
             $table->unsignedBigInteger('id_general_objective');
             $table->unsignedBigInteger('id_specific_objective');
             $table->unsignedBigInteger('id_general_reference');
@@ -25,7 +25,7 @@ return new class extends Migration
 
             //LLaves foraneas
             $table->foreign('id_course')->references('id')->on('courses');
-            $table->foreign('id_profiles_competencies_ra')->references('id')->on('profiles_competencies_ra');
+            $table->foreign('id_profile_competition_ra')->references('id')->on('profiles_competencies_ra');
             $table->foreign('id_general_objective')->references('id')->on('general_objective');
             $table->foreign('id_specific_objective')->references('id')->on('specific_objectives');
             $table->foreign('id_general_reference')->references('id')->on('general_references');

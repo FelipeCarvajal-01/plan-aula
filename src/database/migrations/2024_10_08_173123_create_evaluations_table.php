@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name_evaluation');
             $table->integer('percentage');
-            $table->unsignedBigInteger('id_types_courses');
+            $table->unsignedBigInteger('id_type_course');
             $table->timestamps();
 
             //LLaves foraneas

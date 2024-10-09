@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_program');
             $table->unsignedBigInteger('id_component');
             $table->unsignedBigInteger('id_semester');
-            $table->unsignedBigInteger('id_type_cursose');
+            $table->unsignedBigInteger('id_type_course');
             $table->unsignedBigInteger('id_rol');
             $table->timestamps();
 
