@@ -1,4 +1,3 @@
-version: '3.8'
 # MS Nginx para la conexion externa a los contenedores
 services:
   nginx:
@@ -21,12 +20,12 @@ services:
     ports:
       - "5432:5432"
     environment:
-      POSTGRES_DB: app-projection-social
+      POSTGRES_DB: app-plan-aula
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
 # MS para la aplicacion Laravel 10
   app:
-    container_name: app-projection-social
+    container_name: app-plan-aula
     build: 
       context: ./php
       dockerfile: Dockerfile
