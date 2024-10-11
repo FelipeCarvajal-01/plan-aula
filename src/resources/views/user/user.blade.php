@@ -3,6 +3,7 @@
 @section('title', 'User Management')
 
 @section('content')
+
 <div class="card">
     <!-- Card add row -->
     <div class="card-header">

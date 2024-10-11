@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>ClassRoom Manager @yield('title')</title>
+    <title>Aula Manager @yield('title')</title>
 
     <!-- Otros meta tags y título -->
 
@@ -63,7 +63,6 @@
     <!-- Select2 -->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
 
 </head>
 
@@ -440,13 +439,34 @@
                             <span class="sidebar-mini-icon">
                                 <i class="fa fa-ellipsis-h"></i>
                             </span>
-                            <h4 class="text-section">Gestión de actividades</h4>
+                            <h4 class="text-section">Gestión de perfil de egreso</h4>
                         </li>
 
-                        <li class="nav-item {{ request()->routeIs('activities') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('activities') }}">
-                                <i class="fas fa-clipboard-list"></i>
-                                <p>Gestionar actividades</p>
+                        <li class="nav-item {{ request()->routeIs('profilesCompetenciesRa') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('profilesCompetenciesRa') }}">
+                                <i class="fas fa-book"></i>
+                                <p>Gestionar perfil de egreso</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item {{ request()->routeIs('listProfilesCompetenciesRa') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('listProfilesCompetenciesRa') }}">
+                                <i class="fas fa-list"></i>
+                                <p>Listado de perfiles de egresos</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Gestión de plan de aula</h4>
+                        </li>
+
+                        <li class="nav-item {{ request()->routeIs('docente.docente') ? 'active' : '' }}">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-book-reader"></i>
+                                <p>Gestionar plan de aula</p>
                             </a>
                         </li>
 
@@ -522,7 +542,7 @@
 						</ul>
 					</nav>
 					<div class="copyright ml-auto">
-						2024, made with <i class="fa fa-heart heart text-danger"></i> Copyright &copy; <a href="#">AcademicActivities</a>
+						2024, made with <i class="fa fa-heart heart text-danger"></i> Copyright &copy; <a href="#">AulaManager</a>
 					</div>
 				</div>
 			</footer>
