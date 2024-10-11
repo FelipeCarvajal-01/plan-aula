@@ -16,6 +16,7 @@
         </div>
     </div>
     <!-- end Card add row -->
+
     <div class="card-body">
         <!-- Row -->
         <div class="row">
@@ -61,13 +62,10 @@
                     <td>Otto</td>
                     <td>@mdo</td>
                     <td>
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                            data-target="#addRowModal">
-                            <!-- intento de sacar el modal para el boton de actualizar -->
+                        <button type="button" id="btnupdate" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#ModalUpdate"> <!-- intento de sacar el modal para el boton de actualizar -->
                             <i class="fas fa-pencil-alt"></i> <!-- Ícono de lápiz -->
                         </button>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                            data-target="#exampleModalCenter">
+                        <button type="button" id="btneliminate" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
                             <i class="fas fa-times"></i> <!-- Ícono de equis -->
                         </button>
                     </td>
@@ -177,6 +175,58 @@
         </div>
         <!-- end Modal -->
 
+        <!-- modal update -->
+        <div class="modal fade" id="ModalUpdate" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header no-bd">
+                        <h5 class="modal-title">
+                            <span class="fw-mediumbold">
+                                Actualizar</span>
+                            <span class="fw-light">
+                                Usuario
+                            </span>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="small">Actualiza una fila usando este formulario, asegúrate de completarlos todos.
+                        </p>
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
+                                        <label>Nombre</label>
+                                        <input id="updateName" type="text" class="form-control" placeholder="Nombre">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 pr-0">
+                                    <div class="form-group form-group-default">
+                                        <label>Apellido</label>
+                                        <input id="updatePosition" type="text" class="form-control"
+                                            placeholder="Apellido">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group form-group-default">
+                                        <label>Correo</label>
+                                        <input id="updateOffice" type="text" class="form-control" placeholder="Correo">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer no-bd">
+                        <button type="button" id="updateRowButton" class="btn btn-primary">actualizar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end modal update -->
+
         <!-- Modal eliminate -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -184,20 +234,19 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Elminar</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">Desea eliminar este usuario?
                     </div>
                     <div class="modal-footer">
-                        <button type="button" id="addRowButton" class="btn btn-primary">Cancelar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button
+                        <button type="button" id="addRowButton" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button </div>
                     </div>
                 </div>
             </div>
+            <!-- end modal  eliminate -->
         </div>
-        <!-- end moidal  eliminate -->
     </div>
-</div>
-@endsection
+    @endsection
