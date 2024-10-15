@@ -470,6 +470,29 @@
                             </a>
                         </li>
 
+                        <!-- nav-bar document -->
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Gestión de informes</h4>
+                        </li>
+
+                        <li class="nav-item {{ request()->routeIs('document') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('document')}}">
+                                <i class="fas fa-file-alt"></i> <!-- Ícono de documento -->
+                                <p>Gestionar informe</p>
+                            </a>
+                        </li>
+                        <!-- end nav-bar document -->
+
+                        <li class="nav-item {{ request()->routeIs('listClassroomPlan') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('listClassroomPlan') }}">
+                                <i class="fas fa-list"></i>
+                                <p>Listado de plan de aula</p>
+                            </a>
+                        </li>
+
                         <li class="nav-section">
                             <span class="sidebar-mini-icon">
                                 <i class="fa fa-ellipsis-h"></i>
