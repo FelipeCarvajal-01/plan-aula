@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListProfilesCompetenciesRaController;
 use App\Http\Controllers\ProfilesCompetenciesRaController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ListUsersController;
+use App\http\Controllers\GenerateDocumentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,3 +33,7 @@ Route::get('/listado-profiles-competencies-ra', [ListProfilesCompetenciesRaContr
 
 // Rutas user
 Route::get('/user', [UserController::class, 'index'])->name('user');
+Route::get('/list-users', [ListUsersController::class, 'index'])->name('ListUsers');
+
+//Routes document
+Route::get('/document', [GenerateDocumentController::class, 'index'])->name('document');

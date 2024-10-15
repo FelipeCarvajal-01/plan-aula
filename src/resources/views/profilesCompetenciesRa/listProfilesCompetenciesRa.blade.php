@@ -70,8 +70,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr onclick="selectRow(this)" data-toggle="modal"
-                            data-target="#modalViewInformation">
+                        <tr>
                             <td>1</td>
                             <td>Mark</td>
                             <td>Otto</td>

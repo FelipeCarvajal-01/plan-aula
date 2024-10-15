@@ -246,8 +246,8 @@
                                                     </div>
                                                 </a>
                                                 <a href="#">
-                                                    <div class="notif-icon notif-success"> <i
-                                                            class="fa fa-comment"></i> </div>
+                                                    <div class="notif-icon notif-success"> <i class="fa fa-comment"></i>
+                                                    </div>
                                                     <div class="notif-content">
                                                         <span class="block">
                                                             Rahmad commented on Admin
@@ -379,8 +379,7 @@
                                 alt=".." class="avatar-img rounded-circle">
                         </div>
                         <div class="info">
-                            <a data-toggle="collapse" href="#logoutDropdown" aria-expanded="false"
-                                class="collapsed">
+                            <a data-toggle="collapse" href="#logoutDropdown" aria-expanded="false" class="collapsed">
                                 <span>
                                     <span class="username">dd</span>
                                     <span class="user-level text-uppercase">dd</span>
@@ -392,8 +391,7 @@
                             <div class="in collapse" id="logoutDropdown" style="">
                                 <ul class="nav">
                                     <li>
-                                        <a class="nav-link" href="" data-toggle="modal"
-                                            data-target="#logoutModal">
+                                        <a class="nav-link" href="" data-toggle="modal" data-target="#logoutModal">
                                             <span class="link-collapse">Cerrar sesión</span>
                                         </a>
                                         <form id="logout-form" action="" style="display: none;">
@@ -428,12 +426,14 @@
                             <h4 class="text-section">Gestión de usuarios</h4>
                         </li>
 
+                        <!-- nav-bar list user -->
                         <li class="nav-item {{ request()->routeIs('user') ? 'active' : '' }}">
                             <a class="nav-link" href="{{ route('user') }}">
                                 <i class="fas fa-users"></i>
                                 <p>Gestionar usuarios</p>
                             </a>
                         </li>
+                        <!-- end nav-bar list  user -->
 
                         <li class="nav-section">
                             <span class="sidebar-mini-icon">
@@ -470,6 +470,23 @@
                             </a>
                         </li>
 
+                        <!-- nav-bar document -->
+                        <li class="nav-section">
+                            <span class="sidebar-mini-icon">
+                                <i class="fa fa-ellipsis-h"></i>
+                            </span>
+                            <h4 class="text-section">Gestión de informes</h4>
+                        </li>
+
+                        <li class="nav-item {{ request()->routeIs('document') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('document')}}">
+                                <i class="fas fa-file-alt"></i> <!-- Ícono de documento -->
+                                <p>Gestionar informe</p>
+                            </a>
+                        </li>
+                        <!-- end nav-bar document -->
+
+
                         <li class="nav-section">
                             <span class="sidebar-mini-icon">
                                 <i class="fa fa-ellipsis-h"></i>
@@ -492,8 +509,7 @@
                             </a>
                             <div class="collapse {{ request()->routeIs('cursos.*') ? 'show' : '' }}" id="cursos">
                                 <ul class="nav nav-collapse">
-                                    <li
-                                        class="nav-item {{ request()->routeIs('cursos.campocomun') ? 'active' : '' }}">
+                                    <li class="nav-item {{ request()->routeIs('cursos.campocomun') ? 'active' : '' }}">
                                         <a class="collapse-item" href="#">
                                             <span class="sub-item">Campo común</span>
                                         </a>
@@ -519,33 +535,34 @@
                     <!-- Begin Page Content -->
                     <div class="container-fluid">
                         @section('content')
-                            <!-- CONTENIDO -->
+                        <!-- CONTENIDO -->
                         @show
                     </div>
                 </div>
             </div>
             <!-- Footer -->
             <footer class="footer">
-				<div class="container-fluid">
-					<nav class="pull-left">
-						<ul class="nav">
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									Help
-								</a>
-							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="#">
-									Licenses
-								</a>
-							</li>
-						</ul>
-					</nav>
-					<div class="copyright ml-auto">
-						2024, made with <i class="fa fa-heart heart text-danger"></i> Copyright &copy; <a href="#">AulaManager</a>
-					</div>
-				</div>
-			</footer>
+                <div class="container-fluid">
+                    <nav class="pull-left">
+                        <ul class="nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Help
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Licenses
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="copyright ml-auto">
+                        2024, made with <i class="fa fa-heart heart text-danger"></i> Copyright &copy; <a
+                            href="#">AulaManager</a>
+                    </div>
+                </div>
+            </footer>
             <!-- End Footer -->
         </div>
         <!-- End Contenido and footer -->

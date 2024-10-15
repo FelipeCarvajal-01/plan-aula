@@ -28,7 +28,7 @@ return new class extends Migration
             $table->foreign('id_program')->references('id')->on('roles');
             $table->foreign('id_component')->references('id')->on('components');
             $table->foreign('id_semester')->references('id')->on('semesters');
-            $table->foreign('id_type_cursose')->references('id')->on('types_courses');
+            $table->foreign('id_type_course')->references('id')->on('types_courses');
             $table->foreign('id_rol')->references('id')->on('roles');
         });
     }
