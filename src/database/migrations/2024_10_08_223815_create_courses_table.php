@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_rol');
             $table->timestamps();
 
-            //LLaves foraneas
+            //LLaves foraneasss
             $table->foreign('id_modalitie')->references('id')->on('modalities');
             $table->foreign('id_program')->references('id')->on('roles');
             $table->foreign('id_component')->references('id')->on('components');
