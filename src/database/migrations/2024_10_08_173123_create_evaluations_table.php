@@ -19,7 +19,7 @@ return new class extends Migration
             $table->timestamps();
 
             //LLaves foraneas
-            $table->foreign('id_types_courses')->references('id')->on('types_courses');
+            $table->foreign('id_type_course')->references('id')->on('types_courses');
         });
     }
 
