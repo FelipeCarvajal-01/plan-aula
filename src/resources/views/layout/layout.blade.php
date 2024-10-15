@@ -311,7 +311,7 @@
                             <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"
                                 aria-expanded="false">
                                 <div class="avatar-sm">
-                                    <img src="https://demo.themekita.com/atlantis/livepreview/examples/assets/img/profile.jpg"
+                                    <img src="https://themekita.com/demo-atlantis-lite-bootstrap/livepreview/examples/assets/img/profile.jpg"
                                         alt="..." class="avatar-img rounded-circle">
                                 </div>
                             </a>
@@ -323,7 +323,7 @@
                                         <li>
                                             <div class="user-box">
                                                 <div class="avatar-lg"><img
-                                                        src="https://demo.themekita.com/atlantis/livepreview/examples/assets/img/profile.jpg"
+                                                        src="https://themekita.com/demo-atlantis-lite-bootstrap/livepreview/examples/assets/img/profile.jpg"
                                                         alt="image profile" class="avatar-img rounded"></div>
                                                 <div class="u-text">
                                                     <h4>Hizrian</h4>
@@ -375,7 +375,7 @@
                 <div class="sidebar-content">
                     <div class="user">
                         <div class="avatar-sm float-left mr-2">
-                            <img src="https://demo.themekita.com/atlantis/livepreview/examples/assets/img/profile.jpg"
+                            <img src="https://themekita.com/demo-atlantis-lite-bootstrap/livepreview/examples/assets/img/profile.jpg"
                                 alt=".." class="avatar-img rounded-circle">
                         </div>
                         <div class="info">
@@ -463,29 +463,12 @@
                             <h4 class="text-section">Gestión de plan de aula</h4>
                         </li>
 
-                        <li class="nav-item {{ request()->routeIs('docente.docente') ? 'active' : '' }}">
-                            <a class="nav-link" href="#">
+                        <li class="nav-item {{ request()->routeIs('classroomPlan') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('classroomPlan') }}">
                                 <i class="fas fa-book-reader"></i>
                                 <p>Gestionar plan de aula</p>
                             </a>
                         </li>
-
-                        <!-- nav-bar document -->
-                        <li class="nav-section">
-                            <span class="sidebar-mini-icon">
-                                <i class="fa fa-ellipsis-h"></i>
-                            </span>
-                            <h4 class="text-section">Gestión de informes</h4>
-                        </li>
-
-                        <li class="nav-item {{ request()->routeIs('document') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('document')}}">
-                                <i class="fas fa-file-alt"></i> <!-- Ícono de documento -->
-                                <p>Gestionar informe</p>
-                            </a>
-                        </li>
-                        <!-- end nav-bar document -->
-
 
                         <li class="nav-section">
                             <span class="sidebar-mini-icon">

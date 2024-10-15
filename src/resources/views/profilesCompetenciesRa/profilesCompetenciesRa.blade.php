@@ -77,7 +77,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="confirmSave"
+                            <button type="button" class="btn btn-primary" id="confirmSaveCard"
                                 data-ocultar="cardprofiles" data-mostrar="cardCompetencies" data-modal="modalprofiles">
                                 Aceptar
                             </button>
@@ -92,7 +92,7 @@
     <!-- End Card 1 -->
 
     <!-- Card 2 -->
-    <div class="card" id="cardCompetencies">
+    <div class="card d-none" id="cardCompetencies">
         <div class="card-body">
 
             <h4 class="card-title font-weight-bold text-primary">Asignación de competencias</h4>
@@ -128,9 +128,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="confirmSave"
+                            <button type="button" class="btn btn-primary" id="confirmSaveCard2"
                                 data-ocultar="cardCompetencies" data-mostrar="cardResultsLearning" data-modal="modalCompetencies">
-                                Aceptar CONF
+                                Aceptar
                             </button>
                         </div>
                     </div>
@@ -143,7 +143,7 @@
     <!-- End Card 2 -->
 
     <!-- Card 3 -->
-    <div class="card " id="cardResultsLearning">
+    <div class="card d-none" id="cardResultsLearning">
         <div class="card-body">
 
             <h4 class="card-title font-weight-bold text-primary" style="margin-bottom: 10px;">Asignación de resultados de aprendizaje</h4>
@@ -215,13 +215,13 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="8"></textarea>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="button" class="btn btn-primary btn-round text-end" data-toggle="modal" data-target="#exampleModalCenter">Guardar</button>
+                    <button type="button" class="btn btn-primary btn-round text-end" data-toggle="modal" data-target="#modalResultsLearning">Guardar</button>
                 </div>
             </form>
             <!-- End Forms -->
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal fade" id="modalResultsLearning" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -231,11 +231,14 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            Desea guardar?
+                            ¿Desea guardar los cambios?
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary">Aceptar</button>
+                            <button type="button" class="btn btn-primary" id="confirmSaveCard3"
+                                data-ocultar="cardResultsLearning" data-mostrar="cardprofiles" data-modal="modalResultsLearning">
+                                Aceptar
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -247,7 +250,7 @@
     <!-- End Card 3 -->
 
     <!-- Scripts -->
-    <script src="{{ asset('js/profilesCompetenciesRa.js') }}"></script>
+    <script src="{{ asset('js/profilesCompetenciesRa2.js') }}"></script>
     <!-- End Scripts -->
 
 </div>
