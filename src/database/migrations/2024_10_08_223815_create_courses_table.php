@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_component');
             $table->unsignedBigInteger('id_semester');
             $table->unsignedBigInteger('id_type_course');
-            $table->unsignedBigInteger('id_rol');
+            $table->unsignedBigInteger('id_user')->nullable();
             $table->timestamps();
 
             //LLaves foraneas
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->foreign('id_component')->references('id')->on('components');
             $table->foreign('id_semester')->references('id')->on('semesters');
             $table->foreign('id_type_course')->references('id')->on('types_courses');
-            $table->foreign('id_rol')->references('id')->on('roles');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

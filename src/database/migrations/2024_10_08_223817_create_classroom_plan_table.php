@@ -21,6 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_institutional_reference');
             $table->unsignedBigInteger('id_evaluations');
             $table->unsignedBigInteger('id_update_histories');
+            $table->unsignedBigInteger('id_status');
             $table->timestamps();
 
             //LLaves foraneas
@@ -32,6 +33,7 @@ return new class extends Migration
             $table->foreign('id_institutional_reference')->references('id')->on('institutional_references');
             $table->foreign('id_evaluations')->references('id')->on('evaluations');
             $table->foreign('id_update_histories')->references('id')->on('update_histories');
+            $table->foreign('id_status')->references('id')->on('revision');
         });
     }
 

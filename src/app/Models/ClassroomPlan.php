@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classroom_plan extends Model
+class ClassroomPlan extends Model
 {
     use HasFactory;
 
@@ -20,6 +20,7 @@ class Classroom_plan extends Model
         'id_institutional_reference',
         'id_evaluations',
         'id_update_histories',
+        'id_status',
     ];
 
     public function course()
@@ -53,5 +54,10 @@ class Classroom_plan extends Model
     public function update_histories()
     {
         return $this->belongsTo(Update_history::class, 'id_update_histories');
+    }
+
+    public function revision()
+    {
+        return $this->belongsTo(RevisionModel::class, 'id_status');
     }
 }
