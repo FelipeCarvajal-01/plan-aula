@@ -381,8 +381,8 @@
                         <div class="info">
                             <a data-toggle="collapse" href="#logoutDropdown" aria-expanded="false" class="collapsed">
                                 <span>
-                                    <span class="username">dd</span>
-                                    <span class="user-level text-uppercase">dd</span>
+                                    <span class="username">User</span>
+                                    <span class="user-level text-uppercase">Rol</span>
                                     <span class="caret"></span>
                                 </span>
                             </a>
@@ -470,6 +470,13 @@
                             </a>
                         </li>
 
+                        <li class="nav-item {{ request()->routeIs('listClassroomPlan') ? 'active' : '' }}">
+                            <a class="nav-link" href="{{ route('listClassroomPlan') }}">
+                                <i class="fas fa-list"></i>
+                                <p>Listado de plan de aula</p>
+                            </a>
+                        </li>
+
                         <!-- nav-bar document -->
                         <li class="nav-section">
                             <span class="sidebar-mini-icon">
@@ -484,14 +491,7 @@
                                 <p>Gestionar informe</p>
                             </a>
                         </li>
-                        <!-- end nav-bar document -->
-
-                        <li class="nav-item {{ request()->routeIs('listClassroomPlan') ? 'active' : '' }}">
-                            <a class="nav-link" href="{{ route('listClassroomPlan') }}">
-                                <i class="fas fa-list"></i>
-                                <p>Listado de plan de aula</p>
-                            </a>
-                        </li>
+                        <!-- end nav-bar document -->                        
 
                         <li class="nav-section">
                             <span class="sidebar-mini-icon">

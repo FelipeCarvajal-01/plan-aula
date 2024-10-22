@@ -25,7 +25,7 @@
             </li>
             <li class="nav-item">
                 <a href="#">Listado de perfil de egresos</a>
-            </li>            
+            </li>
         </ul>
     </div>
     <!-- End Breadcumb Header -->
@@ -71,11 +71,31 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>@mdo</td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Facultad
+                                </a>
+                            </td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Programa
+                                </a>
+                            </td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Perfil de egreso
+                                </a>
+                            </td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Competencias 1
+                                </a>
+                            </td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Competencias 2
+                                </a>
+                            </td>
                             <td>
                                 <!-- Botón para editar -->
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"

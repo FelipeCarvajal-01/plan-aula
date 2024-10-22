@@ -25,10 +25,126 @@
             </li>
             <li class="nav-item">
                 <a href="#">Gestion de plan de aula</a>
-            </li>            
+            </li>
         </ul>
     </div>
     <!-- End Breadcumb Header -->
+
+    <!-- Card -->
+    <div class="card">
+        <div class="card-body">
+
+            <h4 class="card-title font-weight-bold text-primary" style="margin-bottom: 10px;">Listado de plan de aula</h4>
+
+            <!-- Row -->
+            <div class="table-responsive">
+                <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="basic-datatables_length"><label>Show <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> entries</label></div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div id="basic-datatables_filter" class="dataTables_filter"><label>Buscador:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables"></label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end Row -->
+
+            <!-- Table -->
+            <div class="table-responsive">
+                <table class="table table-head-bg-primary table-hover" cellspacing="0" width="100%" style="margin-top: 10px;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Curso</th>
+                            <th scope="col">Campo</th>
+                            <th scope="col">Componente</th>
+                            <th scope="col">Semestre</th>
+                            <th scope="col">Creditos</th>
+                            <th scope="col">Tipo de curso</th>
+                            <th scope="col">Objetivo</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Curso
+                                </a>
+                            </td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Campo
+                                </a>
+                            </td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Componente
+                                </a>
+                            </td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Semestre
+                                </a>
+                            </td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Creditos
+                                </a>
+                            </td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Tipo de curso
+                                </a>
+                            </td>
+                            <td class="detalle-docente" data-docente-id="1">
+                                <a href="" class="text-dark">
+                                    Objetivo
+                                </a>
+                            </td>
+                            <td>
+                                <!-- Botón para editar -->
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                    data-target="#modalViewInformation">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <!-- Botón para eliminar -->
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#modalConfirmationDelete">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- End Table -->
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- End Pagination -->
+
+        </div>
+    </div>
+    <!-- End Card -->
 
     <!-- Card 1 -->
     <div class="card" id="cardprofiles">
@@ -39,10 +155,12 @@
             <!-- Forms -->
             <form>
                 <div class="form-group">
-                    <label for="pillSelect">Seleccionar facultad</label>
-                    <select class="form-control input-pill" id="pillSelect">
-                        <option disabled selected value="">Seleccione una facultad</option>
-                        <option>Facultad 1</option>
+                    <label for="pillSelect">Seleccionar ROL</label>
+                    <select class="form-control input-pill" id="programa" name="programa" required="required">
+                        <option disabled selected value="">Seleccione un ROL</option>
+                        @foreach ($roles as $role)
+                        <option value="{{ $role->id }}">{{ $role->rol }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
