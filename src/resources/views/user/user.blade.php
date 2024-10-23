@@ -82,58 +82,24 @@
                             <th scope="col">Accion</th>
                         </tr>
                     </thead>
-                    <tbody onclick="window.location='{{ route('ListUsers') }}'" style="cursor: pointer;">
+                    <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td onclick="event.stopPropagation()">
-                                <button type="button" class="btn btn-primary btn-sm">
+                            <td>
+                                <a href="{{ route('ListUsers')}}" class="text-dark">1</a>
+                            </td>
+                            <td><a href="{{ route('ListUsers')}}" class="text-dark">Mark</a></td>
+                            <td><a href="{{ route('ListUsers')}}" class="text-dark">Otto</a></td>
+                            <td><a href="{{ route('ListUsers')}}" class="text-dark">@mdo</a></td>
+                            <td>
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                    data-target="#ModalUpdate">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm">
+                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                    data-target="#exampleModalCenter">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                            <td onclick="event.stopPropagation()">
-                                <button type="button" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Larry the Bird</td>
-                            <td>Jhonson</td>
-                            <td>@twitter</td>
-                            <td onclick="event.stopPropagation()">
-                                <button type="button" class="btn btn-primary btn-sm">
-                                    <i class="fas fa-pencil-alt"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                            {{--
-                        </tr>
-                        <td onclick="event.stopPropagation()">
-                            <button type="button" class="btn btn-primary btn-sm">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger btn-sm">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </td> --}}
                         </tr>
                     </tbody>
 
@@ -190,7 +156,6 @@
                                                 <input id="addName" type="text" class="form-control"
                                                     placeholder="Nombres" required>
                                             </div>
-
                                         </div>
                                         <div class="col-sm-12">
                                             <div class="form-group form-group-default">
@@ -267,23 +232,37 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="form-group form-group-default">
-                                            <label>Nombre</label>
+                                            <label>Nombres</label>
                                             <input id="updateName" type="text" class="form-control"
-                                                placeholder="Nombre">
+                                                placeholder="Nombres" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 pr-0">
+                                    <div class="col-sm-12">
                                         <div class="form-group form-group-default">
-                                            <label>Apellido</label>
-                                            <input id="updatePosition" type="text" class="form-control"
-                                                placeholder="Apellido">
+                                            <label>Apellidos</label>
+                                            <input id="updateLastName" type="text" class="form-control"
+                                                placeholder="Apellidos" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Teléfono</label>
+                                            <input id="updatePhone" type="text" class="form-control"
+                                                placeholder="Teléfono" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
                                         <div class="form-group form-group-default">
                                             <label>Correo</label>
-                                            <input id="updateOffice" type="text" class="form-control"
-                                                placeholder="Correo">
+                                            <input id="updateEmail" type="email" class="form-control"
+                                                placeholder="Correo" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group form-group-default">
+                                            <label>Contraseña</label>
+                                            <input id="updatePassword" type="password" class="form-control"
+                                                placeholder="Contraseña" required>
                                         </div>
                                     </div>
                                 </div>

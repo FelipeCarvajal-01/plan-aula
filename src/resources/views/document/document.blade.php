@@ -4,52 +4,55 @@
 
 @section('content')
 
+<!-- Breadcumb Header -->
+<div style="margin-bottom: 20px">
+    <ul class="breadcrumbs">
+        <li class="nav-home">
+            <a href="#">
+                <i class="fas fa-home"></i>
+            </a>
+        </li>
+        <li class="separator">
+            <i class="flaticon-right-arrow"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Inicio</a>
+        </li>
+        <li class="separator">
+            <i class="flaticon-right-arrow"></i>
+        </li>
+        <li class="nav-item">
+            <a href="#">Gestion de documento</a>
+        </li>
+    </ul>
+</div>
+<!-- End Breadcumb Header -->
+
+<!-- document -->
 <div>
     <div class="card">
         <div class="card-body">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold text-primary">Previsualización del Documento PDF</h5>
 
-            <head>
-                <meta charset="UTF-8">
-                <title>Document</title>
-                <style>
-                    h1 {
-                        text-align: center;
-                        text-transform: uppercase;
-                    }
+                    <!-- Previsualización del PDF -->
+                    <iframe src="ruta-del-archivo.pdf" width="100%" height="500px" style="border: none;">
+                        Tu navegador no soporta la visualización de PDFs.
+                    </iframe>
 
-                    .contenido {
-                        font-size: 20px;
-                    }
+                    <!-- Botones de acciones -->
+                    <div class="mt-3">
+                        <!-- Botón para ver en una nueva pestaña -->
+                        <a href="ruta-del-archivo.pdf" target="_blank" class="btn btn-primary">Ver en pantalla
+                            completa</a>
 
-                    #primero {
-                        background-color: #ccc;
-                    }
-
-                    #segundo {
-                        color: #44a359;
-                    }
-
-                    #tercero {
-                        text-decoration: line-through;
-                    }
-                </style>
-            </head>
-
-            <body>
-                <h1>Titulo de prueba</h1>
-                <hr>
-                <div class="contenido">
-                    <p id="primero">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore nihil illo odit
-                        aperiam alias rem voluptatem odio maiores doloribus facere recusandae suscipit animi quod
-                        voluptatibus, laudantium obcaecati quisquam minus modi.</p>
-                    <p id="segundo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore nihil illo odit
-                        aperiam alias rem voluptatem odio maiores doloribus facere recusandae suscipit animi quod
-                        voluptatibus, laudantium obcaecati quisquam minus modi.</p>
-                    <p id="tercero">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore nihil illo odit
-                        aperiam alias rem voluptatem odio maiores doloribus facere recusandae suscipit animi quod
-                        voluptatibus, laudantium obcaecati quisquam minus modi.</p>
+                        <!-- Botón para descargar -->
+                        <a href="ruta-del-archivo.pdf" download class="btn btn-success">Descargar PDF</a>
+                    </div>
                 </div>
-            </body>
+                <!-- end document -->
+            </div>
         </div>
     </div>
 </div>
