@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfilesCompetenciesRaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListUsersController;
 use App\http\Controllers\GenerateDocumentController;
+use App\Http\Controllers\ViewProfilesCompetenciesRaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,8 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 // Rutass de profiles_competencies_ra
 Route::get('/profiles-competencies-ra', [ProfilesCompetenciesRaController::class, 'index'])->name('profilesCompetenciesRa');
-Route::get('/listado-profiles-competencies-ra', [ListProfilesCompetenciesRaController::class, 'index'])->name('listProfilesCompetenciesRa');
+Route::get('/list-profiles-competencies-ra', [ListProfilesCompetenciesRaController::class, 'index'])->name('listProfilesCompetenciesRa');
+Route::get('/view-profiles-competencies-ra', [ViewProfilesCompetenciesRaController::class, 'index'])->name('viewProfilesCompetenciesRa');
 
 // Rutas de plan de aula
 Route::get('/classroom-plan', [ClassroomPlanController::class, 'index'])->name('classroomPlan');

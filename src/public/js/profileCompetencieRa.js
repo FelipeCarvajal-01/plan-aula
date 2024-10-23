@@ -94,14 +94,52 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Escuchar el click en el botón de confirmación del modal
-    document.getElementById('confirmationEmpty').addEventListener('click', function () {
+    document.getElementById('confirmationEmptyOne').addEventListener('click', function () {
 
         // Capturar el contenido del textarea
         var contentProfile = document.getElementById('textAreaProfile').value;
 
+        if (contentProfile.trim() === "") {
+            // Mostrar alerta si está vacío
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'El campo de perfil de egreso no puede estar vacío.',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Entendido'
+            });
+        } else {
+            // Si no está vacío, mostrar el modal
+            $('#modalConfirmation').modal('show');
+        }
+
+    });
+
+    // Escuchar el click en el botón de confirmación del modal
+    document.getElementById('confirmationEmptyTwo').addEventListener('click', function () {
+
         //Competencias
         var contentCompetitionOne = document.getElementById('textAreaCompetitionOne').value;
         var contentCompetitionTwo = document.getElementById('textAreaCompetitionTwo').value;
+
+        if (contentCompetitionOne.trim() === "" && contentCompetitionTwo.trim() === "") {
+            // Mostrar alerta si está vacío
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Los campos de competencias no pueden estar vacíos.',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Entendido'
+            });
+        } else {
+            // Si no está vacío, mostrar el modal
+            $('#modalConfirmation').modal('show');
+        }
+
+    });
+
+    // Escuchar el click en el botón de confirmación del modal
+    document.getElementById('confirmationEmptyThree').addEventListener('click', function () {
 
         //Resultados de aprendizaje
         var contentRaOne = document.getElementById('textAreaRaOne').value;
@@ -109,57 +147,19 @@ document.addEventListener('DOMContentLoaded', function () {
         var contentRaThree = document.getElementById('textAreaRaThree').value;
         var contentRaFour = document.getElementById('textAreaRaFour').value;
 
-        // Capturar el contenido del boton
-        var buttonProfile = document.getElementById('confirmationEmpty').value;
-
-        console.log(buttonProfile);
-
-        if (buttonProfile == "1") {
-            // Verificar si el textarea está vacío
-            if (contentProfile.trim() === "") {
-                // Mostrar alerta si está vacío
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Advertencia',
-                    text: 'El campo no puede estar vacío.',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Entendido'
-                });
-            } else {
-                // Si no está vacío, mostrar el modal
-                $('#modalConfirmation').modal('show');
-            }
-        } else if (buttonProfile == "2") {
-            // Verificar si el textarea está vacío
-            if (contentCompetitionOne.trim() === "" && contentCompetitionTwo.trim() === "") {
-                // Mostrar alerta si está vacío
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Advertencia',
-                    text: 'El campo no puede estar vacío.',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Entendido'
-                });
-            } else {
-                // Si no está vacío, mostrar el modal
-                $('#modalConfirmation').modal('show');
-            }
-        } else if (buttonProfile == "3") {
-            // Verificar si el textarea está vacío
-            if (contentRaOne.trim() === "" && contentRaTwo.trim() === "" 
-                && contentRaThree.trim() === "" && contentRaFour.trim() === "") {
-                // Mostrar alerta si está vacío
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Advertencia',
-                    text: 'El campo no puede estar vacío.',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'Entendido'
-                });
-            } else {
-                // Si no está vacío, mostrar el modal
-                $('#modalConfirmation').modal('show');
-            }
+        if (contentRaOne.trim() === "" && contentRaTwo.trim() === ""
+            && contentRaThree.trim() === "" && contentRaFour.trim() === "") {
+            // Mostrar alerta si está vacío
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Los campo de resultados de aprendizaje no pueden estar vacíos.',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Entendido'
+            });
+        } else {
+            // Si no está vacío, mostrar el modal
+            $('#modalConfirmation').modal('show');
         }
 
     });

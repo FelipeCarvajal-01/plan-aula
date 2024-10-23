@@ -24,7 +24,7 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Listado de perfil de egresos</a>
+                <a href="#">Listado de perfiles de egresos</a>
             </li>
         </ul>
     </div>
@@ -72,27 +72,27 @@
                     <tbody>
                         <tr>
                             <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
+                                <a href="{{ route('viewProfilesCompetenciesRa') }}" class="text-dark">
                                     Facultad
                                 </a>
                             </td>
                             <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
+                                <a href="{{ route('viewProfilesCompetenciesRa') }}" class="text-dark">
                                     Programa
                                 </a>
                             </td>
                             <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
+                                <a href="{{ route('viewProfilesCompetenciesRa') }}" class="text-dark">
                                     Perfil de egreso
                                 </a>
                             </td>
                             <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
+                                <a href="{{ route('viewProfilesCompetenciesRa') }}" class="text-dark">
                                     Competencias 1
                                 </a>
                             </td>
                             <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
+                                <a href="{{ route('viewProfilesCompetenciesRa') }}" class="text-dark">
                                     Competencias 2
                                 </a>
                             </td>

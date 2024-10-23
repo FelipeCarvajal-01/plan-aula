@@ -24,14 +24,20 @@
                 <i class="flaticon-right-arrow"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Gestionar perfil de egreso</a>
+                <a href="#">Listado de perfiles de egresos</a>
+            </li>
+            <li class="separator">
+                <i class="flaticon-right-arrow"></i>
+            </li>
+            <li class="nav-item">
+                <a href="#">Visualizar perfil de egreso</a>
             </li>
         </ul>
     </div>
     <!-- End Breadcumb Header -->
 
     <!-- Card 1 -->
-    <div class="card" id="card-1" style="display: block;">
+    <div class="card">
         <div class="card-body">
 
             <h4 class="card-title font-weight-bold text-primary">Asignación de perfil de egreso</h4>
@@ -42,30 +48,19 @@
                     <label for="pillSelect">Seleccionar facultad</label>
                     <select class="form-control input-pill" id="pillSelectFaculty">
                         <option disabled selected value="">Seleccione una facultad</option>
-                        @foreach ($facultys as $faculty)
-                        <option value="{{ $faculty->id }}">{{ $faculty->name_faculty }}
-                        </option>
-                        @endforeach
+                        
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="pillSelect">Seleccionar programa</label>
                     <select class="form-control input-pill" id="pillSelectProgram">
                         <option disabled selected value="">Seleccione un programa</option>
-                        @foreach ($programs as $program)
-                        <option value="{{ $program->id }}">{{ $program->name_program }}
-                        </option>
-                        @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Perfil de egreso</label>
                     <textarea class="form-control" id="textAreaProfile" rows="8" required></textarea>
                 </div>
-                <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;"
-                    id="confirmationEmptyOne"> 
-                    Guardar
-                </button>
             </form>
             <!-- End Forms -->
 
@@ -74,7 +69,7 @@
     <!-- End Card 1 -->
 
     <!-- Card 2 -->
-    <div class="card" id="card-2" style="display:none;">
+    <div class="card">
         <div class="card-body">
 
             <h4 class="card-title font-weight-bold text-primary">Asignación de competencias</h4>
@@ -89,10 +84,6 @@
                     <label for="exampleFormControlTextarea1">Competencia 2</label>
                     <textarea class="form-control" id="textAreaCompetitionTwo" rows="6"></textarea>
                 </div>
-                <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;"
-                    id="confirmationEmptyTwo">
-                    Guardar
-                </button>
             </form>
             <!-- End Forms -->
 
@@ -101,7 +92,7 @@
     <!-- End Card 2 -->
 
     <!-- Card 3 -->
-    <div class="card" id="card-3" style="display:none;">
+    <div class="card">
         <div class="card-body">
 
             <h4 class="card-title font-weight-bold text-primary" style="margin-bottom: 10px;">Asignación de resultados de aprendizaje</h4>
@@ -172,39 +163,12 @@
                     <label for="exampleFormControlTextarea1">Resultado de aprendizaje #4</label>
                     <textarea class="form-control" id="textAreaRaFour" rows="8"></textarea>
                 </div>
-                <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;"
-                    id="confirmationEmptyThree">
-                    Guardar
-                </button>
             </form>
             <!-- End Forms -->
 
         </div>
     </div>
     <!-- End Card 3 -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="modalConfirmation" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Advertencia</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    ¿Deseas guardar?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" id="confirm-button" data-card="1">Aceptar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Modal -->
 
     <!-- Scripts -->
     <script src="{{ asset('js/profileCompetencieRa.js') }}"></script>
