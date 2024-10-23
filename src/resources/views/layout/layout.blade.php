@@ -197,14 +197,14 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="scroll-element scroll-x" style="">
+                                        <div class="scroll-element scroll-x">
                                             <div class="scroll-element_outer">
                                                 <div class="scroll-element_size"></div>
                                                 <div class="scroll-element_track"></div>
                                                 <div class="scroll-bar ui-draggable ui-draggable-handle"></div>
                                             </div>
                                         </div>
-                                        <div class="scroll-element scroll-y" style="">
+                                        <div class="scroll-element scroll-y">
                                             <div class="scroll-element_outer">
                                                 <div class="scroll-element_size"></div>
                                                 <div class="scroll-element_track"></div>
@@ -279,14 +279,14 @@
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="scroll-element scroll-x" style="">
+                                        <div class="scroll-element scroll-x">
                                             <div class="scroll-element_outer">
                                                 <div class="scroll-element_size"></div>
                                                 <div class="scroll-element_track"></div>
                                                 <div class="scroll-bar ui-draggable ui-draggable-handle"></div>
                                             </div>
                                         </div>
-                                        <div class="scroll-element scroll-y" style="">
+                                        <div class="scroll-element scroll-y">
                                             <div class="scroll-element_outer">
                                                 <div class="scroll-element_size"></div>
                                                 <div class="scroll-element_track"></div>
@@ -344,14 +344,14 @@
                                             <a class="dropdown-item" href="#">Logout</a>
                                         </li>
                                     </div>
-                                    <div class="scroll-element scroll-x" style="">
+                                    <div class="scroll-element scroll-x">
                                         <div class="scroll-element_outer">
                                             <div class="scroll-element_size"></div>
                                             <div class="scroll-element_track"></div>
                                             <div class="scroll-bar ui-draggable ui-draggable-handle"></div>
                                         </div>
                                     </div>
-                                    <div class="scroll-element scroll-y" style="">
+                                    <div class="scroll-element scroll-y" >
                                         <div class="scroll-element_outer">
                                             <div class="scroll-element_size"></div>
                                             <div class="scroll-element_track"></div>
@@ -389,7 +389,7 @@
                             </a>
                             <div class="clearfix"></div>
 
-                            <div class="in collapse" id="logoutDropdown" style="">
+                            <div class="in collapse" id="logoutDropdown" >
                                 <ul class="nav">
                                     <li>
                                         <a class="nav-link" href="" data-toggle="modal" data-target="#logoutModal">
