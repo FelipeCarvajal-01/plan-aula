@@ -72,42 +72,51 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Curso
+                        @foreach ($classroom as $classroo)
+                        <tr data-docente-id="{{ $classroo->id }}">
+
+                            <td class="detalle-docente" data-docente-id="{{ $classroo->id }}">
+                                <a href="{{ route('docente.info', ['id' => $classroo->id]) }}" class="text-dark">
+                                    {{ $classroo->id_course }}
                                 </a>
                             </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Campo   
+
+                            <td class="detalle-docente" data-docente-id="{{ $classroo->id }}">
+                                <a href="{{ route('docente.info', ['id' => $classroo->id]) }}" class="text-dark">
+                                    {{ $classroo-> id_profile_competition_ra }}
                                 </a>
                             </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Componente
+
+                            <td class="detalle-docente" data-docente-id="{{ $classroo->id }}">
+                                <a href="{{ route('docente.info', ['id' => $classroo->id]) }}" class="text-dark">
+                                    {{ $classroo->id_general_objective }}
                                 </a>
                             </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Semestre
+
+                            <td class="detalle-docente" data-docente-id="{{ $classroo->id }}">
+                                <a href="{{ route('docente.info', ['id' => $classroo->id]) }}" class="text-dark">
+                                    {{ $classroo->id_specific_objective }}
                                 </a>
                             </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Creditos
+
+                            <td class="detalle-docente" data-docente-id="{{ $classroo->id }}">
+                                <a href="{{ route('docente.info', ['id' => $classroo->id]) }}" class="text-dark">
+                                    {{ $classroo->id_general_reference }}
                                 </a>
                             </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Tipo de curso
+
+                            <td class="detalle-docente" data-docente-id="{{ $classroo->id }}">
+                                <a href="{{ route('docente.info', ['id' => $classroo->id]) }}" class="text-dark">
+                                    {{ $classroo->id_institutional_reference }}
                                 </a>
                             </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Objetivo
+
+                            <td class="detalle-docente" data-docente-id="{{ $classroo->id }}">
+                                <a href="{{ route('docente.info', ['id' => $classroo->id]) }}" class="text-dark">
+                                    {{ $classroo->id_evaluations }}
                                 </a>
                             </td>
+
                             <td>
                                 <!-- Botón para editar -->
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
@@ -120,6 +129,10 @@
                                     <i class="fas fa-times"></i>
                                 </button>
                             </td>
+
+                        </tr>
+                        @endforeach
+
                         </tr>
                     </tbody>
                 </table>

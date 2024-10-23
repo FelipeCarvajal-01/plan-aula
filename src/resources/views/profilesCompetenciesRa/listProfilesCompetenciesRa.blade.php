@@ -99,12 +99,12 @@
                             <td>
                                 <!-- Botón para editar -->
                                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                    data-target="#confirmationDelete">
+                                    data-target="#modalEdit">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
                                 <!-- Botón para eliminar -->
                                 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                    data-target="confirmationDelete">
+                                    data-target="#modalConfirmationDelete">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </td>
@@ -135,7 +135,7 @@
     <!-- End Card -->
 
     <!-- Modal -->
-    <div class="modal fade bd-example-modal-lg" id="modalViewInformation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -204,7 +204,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Deseas eliminar?
+                    ¿Seguro que deseas eliminar?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>

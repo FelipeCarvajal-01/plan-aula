@@ -38,8 +38,12 @@
 
             <div class="form-group">
                 <label for="pillSelect">Seleccione programa</label>
-                <select class="form-control input-pill" id="pillSelect">
+                <select class="form-control input-pill" id="pillSelectProgram" name="program" required="required">
                     <option disabled selected value="">Seleccione un programa</option>
+                    @foreach ($programs as $program)
+                    <option value="{{ $program->id }}">{{ $program->name_program }}
+                    </option>
+                    @endforeach
                 </select>
             </div>
 
@@ -241,7 +245,7 @@
     <!-- End Card -->
 
     <!-- Card Info -->
-    <div class="card" id="cardprofiles">
+    <div class="card">
         <div class="card-body">
 
             <h4 class="card-title font-weight-bold text-primary">Información de curso</h4>
@@ -299,10 +303,10 @@
 
         </div>
     </div>
-    <!-- End Card 1 -->
+    <!-- End Card -->
 
     <!-- Card Objective -->
-    <div class="card" id="cardprofiles">
+    <div class="card" id="card-1" style="display: block;">
         <div class="card-body">
 
             <h4 class="card-title font-weight-bold text-primary">Objetivo general</h4>
@@ -312,12 +316,18 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
             </div>
 
+            <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;"
+                data-toggle="modal" data-target="#modalConfirmation">
+                Guardar
+            </button>
+
         </div>
+
     </div>
-    <!-- End Card 1 -->
+    <!-- End Card -->
 
     <!-- Card Specific Objective -->
-    <div class="card" id="cardprofiles">
+    <div class="card" id="card-2" style="display:none;">
         <div class="card-body">
 
             <h4 class="card-title font-weight-bold text-primary">Objetivos especificos</h4>
@@ -337,9 +347,263 @@
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
             </div>
 
+            <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;"
+                data-toggle="modal" data-target="#modalConfirmation">
+                Guardar
+            </button>
+
         </div>
     </div>
-    <!-- End Card 1 -->
+    <!-- End Card -->
+
+    <!-- Card Specific Objective #1 -->
+    <div class="card" id="card-3" style="display:none;">
+        <div class="card-body">
+
+            <h4 class="card-title font-weight-bold text-primary">Temas</h4>
+
+            <!-- Accordion -->
+            <div class="accordion accordion-secondary" style="margin-top: 10px;">
+                <div class="card">
+                    <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <div class="span-icon" style="color: #2B7FEA;">
+                            <div class="flaticon-box-1"></div>
+                        </div>
+                        <div class="span-title" style="color: #2B7FEA;">
+                            Objetivo especifico #1
+                        </div>
+                        <div class="span-mode"></div>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Accordion -->
+
+            <!-- Row -->
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #1</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #2</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #3</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #4</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #5</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row -->
+
+            <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;"
+                data-toggle="modal" data-target="#modalConfirmation">
+                Guardar
+            </button>
+
+        </div>
+    </div>
+    <!-- End Card -->
+
+    <!-- Card Specific Objective #2 -->
+    <div class="card" id="card-4" style="display:none;">
+        <div class="card-body">
+
+            <h4 class="card-title font-weight-bold text-primary">Temas</h4>
+
+            <!-- Accordion -->
+            <div class="accordion accordion-secondary" style="margin-top: 10px;">
+                <div class="card">
+                    <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <div class="span-icon" style="color: #2B7FEA;">
+                            <div class="flaticon-box-1"></div>
+                        </div>
+                        <div class="span-title" style="color: #2B7FEA;">
+                            Objetivo especifico #2
+                        </div>
+                        <div class="span-mode"></div>
+                    </div>
+
+                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Accordion -->
+
+            <!-- Row -->
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #6</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #7</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #8</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #9</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #10</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row -->
+
+            <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;"
+                data-toggle="modal" data-target="#modalConfirmation">
+                Guardar
+            </button>
+
+        </div>
+    </div>
+    <!-- End Card -->
+
+    <!-- Card Specific Objective #3 -->
+    <div class="card" id="card-5" style="display:none;">
+        <div class="card-body">
+
+            <h4 class="card-title font-weight-bold text-primary">Temas</h4>
+
+            <!-- Accordion -->
+            <div class="accordion accordion-secondary" style="margin-top: 10px;">
+                <div class="card">
+                    <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        <div class="span-icon" style="color: #2B7FEA;">
+                            <div class="flaticon-box-1"></div>
+                        </div>
+                        <div class="span-title" style="color: #2B7FEA;">
+                            Objetivo especifico #3
+                        </div>
+                        <div class="span-mode"></div>
+                    </div>
+
+                    <div id="collapseThree" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Accordion -->
+
+            <!-- Row -->
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #11</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #12</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #13</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #14</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #15</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="form-group">
+                        <label>Ingrese tema semana #16</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"></textarea>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row -->
+
+            <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;"
+                data-toggle="modal" data-target="#modalConfirmation">
+                Guardar
+            </button>
+
+        </div>
+    </div>
+    <!-- End Card -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalConfirmation" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Advertencia</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ¿Deseas guardar?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" id="confirm-button" data-card="1">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/classroomPlan.js') }}"></script>
+    <!-- End Scripts -->
 
 </div>
 
