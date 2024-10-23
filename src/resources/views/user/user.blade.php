@@ -34,7 +34,7 @@
         <!-- Card add row -->
         <div class="card-header">
             <div class="d-flex align-items-center">
-                <h4 class="card-title">Agregar Usuario</h4>
+                <h4 class="card-title font-weight-bold text-primary">Agregar Usuario</h4>
                 <button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
                     <i class="fa fa-plus"></i>
                     Agregar
@@ -82,57 +82,61 @@
                             <th scope="col">Accion</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr onclick="window.location='{{ route('ListUsers') }}'" style="cursor: pointer;">
+                    <tbody onclick="window.location='{{ route('ListUsers') }}'" style="cursor: pointer;">
+                        <tr>
                             <td>1</td>
                             <td>Mark</td>
                             <td>Otto</td>
                             <td>@mdo</td>
                             <td onclick="event.stopPropagation()">
-                                <button type=" button" id="btnupdate" class="btn btn-primary btn-sm" data-toggle="modal"
-                                    data-target="#ModalUpdate">
-                                    <!-- intento de sacar el modal para el boton de actualizar -->
-                                    <i class="fas fa-pencil-alt"></i> <!-- Ícono de lápiz -->
+                                <button type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" id="btneliminate" class="btn btn-danger btn-sm"
-                                    data-toggle="modal" data-target="#exampleModalCenter">
-                                    <i class="fas fa-times"></i> <!-- Ícono de equis -->
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-times"></i>
                                 </button>
                             </td>
                         </tr>
-                        <tr onclick="window.location='{{ route('ListUsers') }}'" style="cursor: pointer;">
+                        <tr>
                             <td>2</td>
                             <td>Jacob</td>
                             <td>Thornton</td>
                             <td>@fat</td>
                             <td onclick="event.stopPropagation()">
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                    data-target="#ModalUpdate" ">
-                            <i class=" fas fa-pencil-alt"></i>
-                                </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                    data-target="#exampleModalCenter">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </td>
-                        </tr>
-                        <tr onclick="window.location='{{ route('ListUsers') }}'" style="cursor: pointer;">
-                            <td>3</td>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                            <td onclick="event.stopPropagation()">
-                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                    data-target="#ModalUpdate">
+                                <button type="button" class="btn btn-primary btn-sm">
                                     <i class="fas fa-pencil-alt"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                    data-target="#exampleModalCenter">
+                                <button type="button" class="btn btn-danger btn-sm">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </td>
                         </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Larry the Bird</td>
+                            <td>Jhonson</td>
+                            <td>@twitter</td>
+                            <td onclick="event.stopPropagation()">
+                                <button type="button" class="btn btn-primary btn-sm">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger btn-sm">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </td>
+                            {{--
+                        </tr>
+                        <td onclick="event.stopPropagation()">
+                            <button type="button" class="btn btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger btn-sm">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </td> --}}
+                        </tr>
                     </tbody>
+
                 </table>
             </div>
             <!-- End of User Management Table -->
@@ -160,57 +164,83 @@
             <!-- End of Pagination -->
 
             <!-- Modal -->
-            <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" style="display: none;"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header no-bd">
-                            <h5 class="modal-title">
-                                <span class="fw-mediumbold">
-                                    Nuevo</span>
-                                <span class="fw-light">
-                                    Usuario
-                                </span>
-                            </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p class="small">Crea una nueva fila usando este formulario, asegúrate de completarlos
-                                todos.
-                            </p>
-                            <form>
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="form-group form-group-default">
-                                            <label>Nombre</label>
-                                            <input id="addName" type="text" class="form-control" placeholder="Nombre">
+            <form method="POST" action="/user" id="userForm">
+                @csrf
+                <div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" style="display: none;"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header no-bd">
+                                <h5 class="modal-title">
+                                    <span class="fw-mediumbold">Nuevo</span>
+                                    <span class="fw-light">Usuario</span>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p class="small">Crea una nueva fila usando este formulario, asegúrate de completarlos
+                                    todos.</p>
+                                <form id="userForm">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Nombres</label>
+                                                <input id="addName" type="text" class="form-control"
+                                                    placeholder="Nombres" required>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Apellidos</label>
+                                                <input id="addLastName" type="text" class="form-control"
+                                                    placeholder="Apellidos" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Teléfono</label>
+                                                <input id="addPhone" type="text" class="form-control"
+                                                    placeholder="Teléfono" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Correo</label>
+                                                <input id="addEmail" type="email" class="form-control"
+                                                    placeholder="Correo" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Contraseña</label>
+                                                <input id="addPassword" type="password" class="form-control"
+                                                    placeholder="Contraseña" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-12">
+                                            <div class="form-group form-group-default">
+                                                <label>Rol</label>
+                                                <select id="addRole" class="form-control" required>
+                                                    <option value="">Seleccionar Rol</option>
+                                                    <option value="1">Administrador</option>
+                                                    <option value="2">Usuario</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 pr-0">
-                                        <div class="form-group form-group-default">
-                                            <label>Apellido</label>
-                                            <input id="addPosition" type="text" class="form-control"
-                                                placeholder="Apellido">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group form-group-default">
-                                            <label>Correo</label>
-                                            <input id="addOffice" type="text" class="form-control" placeholder="Correo">
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer no-bd">
-                            <button type="button" id="addRowButton" class="btn btn-primary">Agregar</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer no-bd">
+                                <button type="button" id="addRowButton" class="btn btn-primary">Agregar</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
             <!-- end Modal -->
 
             <!-- modal update -->
@@ -294,11 +324,10 @@
         </div>
 
         <!-- scripts -->
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> <!-- Versión completa de jQuery -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script src="ruta/al/plugin/jquery.scrollbar.js"></script> <!-- Asegúrate de incluir el plugin -->
-        <script src="{{asset('js/users.js')}}"></script>
+        <script src="{{ asset('js/users.js')}}"></script>
+
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
         <!-- end scripts -->
 
     </div>

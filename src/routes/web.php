@@ -39,7 +39,10 @@ Route::get('/list-classroom-plan', [ListClassroomPlanController::class, 'index']
 
 // Rutas user
 Route::get('/user', [UserController::class, 'index'])->name('user');
-Route::get('/list-users', [ListUsersController::class, 'index'])->name('ListUsers');
+Route::post('/user', [UserController::class,'store'])-> name('user.store');
+Route::get('/ListUsers', [ListUsersController::class, 'index'])->name('ListUsers');
+// Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
+// Route::get('/user', [UserController::class,'store']);
 
 //Routes document
 Route::get('/document', [GenerateDocumentController::class, 'index'])->name('document');
