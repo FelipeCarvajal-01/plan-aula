@@ -32,28 +32,24 @@
 <div>
     <div class="card">
         <div class="card-body">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title font-weight-bold text-primary">Previsualización del Documento PDF</h5>
+            <h5 class="card-title font-weight-bold text-primary">Previsualización del Documento PDF</h5>
 
-                    <!-- Previsualización del PDF -->
-                    <iframe src="ruta-del-archivo.pdf" width="100%" height="500px" style="border: none;">
-                        Tu navegador no soporta la visualización de PDFs.
-                    </iframe>
+            <!-- Previsualización del PDF -->
+            <iframe src="ruta-del-archivo.pdf" width="100%" height="500px" style="border: none;">
+                Tu navegador no soporta la visualización de PDFs.
+            </iframe>
 
-                    <!-- Botones de acciones -->
-                    <div class="mt-3">
-                        <!-- Botón para ver en una nueva pestaña -->
-                        <a href="ruta-del-archivo.pdf" target="_blank" class="btn btn-primary">Ver en pantalla
-                            completa</a>
+            <!-- Botones de acciones -->
+            <div class="mt-3">
+                <!-- Botón para ver en una nueva pestaña -->
+                <a href="ruta-del-archivo.pdf" target="_blank" class="btn btn-primary">Ver en pantalla
+                    completa</a>
 
-                        <!-- Botón para descargar -->
-                        <a href="ruta-del-archivo.pdf" download class="btn btn-success">Descargar PDF</a>
-                    </div>
-                </div>
-                <!-- end document -->
+                <!-- Botón para descargar -->
+                <a href="ruta-del-archivo.pdf" download class="btn btn-success">Descargar PDF</a>
             </div>
         </div>
+        <!-- end document -->
     </div>
 </div>
 

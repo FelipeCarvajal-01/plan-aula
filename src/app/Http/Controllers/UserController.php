@@ -2,17 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App;
 use App\Models\User;
 use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\models\rol;
 
 class UserController extends Controller
 {
     public function index()
     {
-        // $users = User::all() , compact('users');
-        return view('user.user');
+        $users = User::all();
+        $roles = Rol::orderBy('id')->get();
+        return view('user.user', compact('users', 'roles'));
     }
 
     public function store(Request $request)
@@ -25,7 +28,6 @@ class UserController extends Controller
             'phone' => 'required|string|max:10',
             'id_rol' => 'required|integer'
         ]);
-        // dd($request->all());
         if ($validator->fails()) {
             return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }

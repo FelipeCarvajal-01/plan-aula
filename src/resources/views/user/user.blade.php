@@ -60,8 +60,8 @@
             <div class="col-sm-12 col-md-6">
                 <div id="add-row_filter" class="dataTables_filter text-right">
                     <label>Buscar:
-                        <input type="search" class="form-control form-control-sm" placeholder=""
-                            aria-controls="add-row" style="max-width: 300px;">
+                        <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="add-row"
+                            style="max-width: 300px;">
                     </label>
                 </div>
             </div>
@@ -81,13 +81,26 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach ($users as $user)
                     <tr>
                         <td>
-                            <a href="{{ route('ListUsers')}}" class="text-dark">1</a>
+                            <a href="{{ route('ListUsers')}}" class="text-dark">
+                                {{ $loop->iteration }}
+                            </a>
                         </td>
-                        <td><a href="{{ route('ListUsers')}}" class="text-dark">Mark</a></td>
-                        <td><a href="{{ route('ListUsers')}}" class="text-dark">Otto</a></td>
-                        <td><a href="{{ route('ListUsers')}}" class="text-dark">@mdo</a></td>
+                        <td>
+                            <a href="{{ route('ListUsers')}}" class="text-dark">
+                                {{ $user->name }}
+                            </a>
+                        </td>
+                        <td><a href="{{ route('ListUsers')}}" class="text-dark">
+                                {{ $user->last_name }}
+                            </a>
+                        </td>
+                        <td><a href="{{ route('ListUsers')}}" class="text-dark">
+                                {{ $user->email }}
+                            </a>
+                        </td>
                         <td>
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
                                 data-target="#ModalUpdate">
@@ -99,6 +112,7 @@
                             </button>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -148,29 +162,29 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label>Nombres</label>
-                                        <input id="addName" type="text" class="form-control"
-                                            placeholder="Nombres" required>
+                                        <input id="addName" type="text" class="form-control" placeholder="Nombres"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label>Apellidos</label>
-                                        <input id="addLastName" type="text" class="form-control"
-                                            placeholder="Apellidos" required>
+                                        <input id="addLastName" type="text" class="form-control" placeholder="Apellidos"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label>Teléfono</label>
-                                        <input id="addPhone" type="text" class="form-control"
-                                            placeholder="Teléfono" required>
+                                        <input id="addPhone" type="text" class="form-control" placeholder="Teléfono"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label>Correo</label>
-                                        <input id="addEmail" type="email" class="form-control"
-                                            placeholder="Correo" required>
+                                        <input id="addEmail" type="email" class="form-control" placeholder="Correo"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -203,8 +217,7 @@
         <!-- end Modal -->
 
         <!-- modal update -->
-        <div class="modal fade" id="ModalUpdate" tabindex="-1" role="dialog" style="display: none;"
-            aria-hidden="true">
+        <div class="modal fade" id="ModalUpdate" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header no-bd">
@@ -224,8 +237,8 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label>Nombres</label>
-                                        <input id="updateName" type="text" class="form-control"
-                                            placeholder="Nombres" required>
+                                        <input id="updateName" type="text" class="form-control" placeholder="Nombres"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -238,15 +251,15 @@
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label>Teléfono</label>
-                                        <input id="updatePhone" type="text" class="form-control"
-                                            placeholder="Teléfono" required>
+                                        <input id="updatePhone" type="text" class="form-control" placeholder="Teléfono"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
                                         <label>Correo</label>
-                                        <input id="updateEmail" type="email" class="form-control"
-                                            placeholder="Correo" required>
+                                        <input id="updateEmail" type="email" class="form-control" placeholder="Correo"
+                                            required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">
@@ -254,8 +267,9 @@
                                         <label>Rol</label>
                                         <select id="updateRole" class="form-control" required>
                                             <option value="">Seleccionar Rol</option>
-                                            <option value="1">Administrador</option>
-                                            <option value="2">Usuario</option>
+                                            @foreach ($roles as $rol)
+                                            <option value="{{ $rol->id }}">{{ $rol->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -284,7 +298,8 @@
                     </div>
                     <div class="modal-body">¿Desea eliminar este usuario?</div>
                     <div class="modal-footer">
-                        <button type="button" id="addRowButton" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" id="addRowButton" class="btn btn-primary"
+                            data-dismiss="modal">Cancelar</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
                     </div>
                 </div>
@@ -293,6 +308,10 @@
         <!-- end modal eliminate -->
 
     </div>
+
+    <!-- scripts -->
+    <script src="{{  asset('js/users.js') }}"></script>
+    <!-- end scripts -->
 </div>
 
 @endsection

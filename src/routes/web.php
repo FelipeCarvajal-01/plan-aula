@@ -41,7 +41,7 @@ Route::get('/list-classroom-plan', [ListClassroomPlanController::class, 'index']
 
 // Rutas user
 Route::get('/user', [UserController::class, 'index'])->name('user');
-Route::post('/user', [UserController::class,'store'])-> name('user.store');
+Route::post('/user', [UserController::class,'store']);
 Route::get('/ListUsers', [ListUsersController::class, 'index'])->name('ListUsers');
 // Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 // Route::get('/user', [UserController::class,'store']);

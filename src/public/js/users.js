@@ -37,27 +37,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const password = document.getElementById("addPassword").value;
             const phone = document.getElementById("addPhone").value;
             const idRol = document.getElementById("addRole").value;
-
             const csrfToken = document
                 .querySelector('meta[name="csrf-token"]')
                 .getAttribute("content");
 
-            console.log({
-                name: name,
-                last_name: last_name,
-                email: email,
-                password: password,
-                phone: phone,
-                id_rol: idRol,
-            });
+            console.log({ name, last_name, email, password, phone, idRol }); //verificacion de valores
 
-            if (name && phone && email && password && idRol) {
-                console.log("name", name);
-                console.log("last_name", last_name);
-                console.log("phone", phone);
-                console.log("email", email);
-                console.log("password", password);
-                console.log("id rol", idRol);
+            if (name && last_name && phone && email && password && idRol) {
                 fetch("/user", {
                     method: "POST",
                     headers: {
@@ -74,25 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         id_rol: idRol,
                     }),
                 })
-                    .then((response) => {
-                        console.log("El error es: ", response);
-                        if (!response.ok) {
-                            return response.json().then((data) => {
-                                console.error(
-                                    "Validation errors:",
-                                    data.errors
-                                ); // Imprimir errores de validación
-                                throw new Error(
-                                    `HTTP error! status: ${response.status} - ${
-                                        data.errors
-                                            ? JSON.stringify(data.errors)
-                                            : data.message
-                                    }`
-                                );
-                            });
-                        }
-                        return response.json();
-                    })
+                    .then((response) => response.json())
                     .then((data) => {
                         if (data.success) {
                             alert("El usuario fue creado");
