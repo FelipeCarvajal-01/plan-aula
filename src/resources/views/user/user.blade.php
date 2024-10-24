@@ -4,8 +4,6 @@
 
 @section('content')
 
-
-
 <!-- Breadcumb Header -->
 <div style="margin-bottom: 20px">
     <ul class="breadcrumbs">
@@ -296,6 +294,5 @@
 
     </div>
 </div>
-
 
 @endsection

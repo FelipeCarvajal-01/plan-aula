@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('evaluations', function (Blueprint $table) {
             $table->id();
             $table->string('name_evaluation');
-            $table->integer('percentage');
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('id_type_course');
             $table->timestamps();
 

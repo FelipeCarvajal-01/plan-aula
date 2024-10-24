@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('institutional_references', function (Blueprint $table) {
             $table->id();
-            $table->string('name_institutional_reference');
+            $table->text('name_institutional_reference');
             $table->timestamps();
         });
     }

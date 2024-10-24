@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('general_references', function (Blueprint $table) {
             $table->id();
-            $table->string('name_general_reference');
+            $table->text('name_general_reference');
             $table->timestamps();
         });
     }

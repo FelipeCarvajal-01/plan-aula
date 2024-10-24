@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_specific_objective');
             $table->unsignedBigInteger('id_general_reference');
             $table->unsignedBigInteger('id_institutional_reference');
-            $table->unsignedBigInteger('id_evaluations');
+            $table->unsignedBigInteger('id_assignment_evaluation');
             $table->unsignedBigInteger('id_update_histories');
             $table->timestamps();
 
@@ -30,7 +30,7 @@ return new class extends Migration
             $table->foreign('id_specific_objective')->references('id')->on('specific_objectives');
             $table->foreign('id_general_reference')->references('id')->on('general_references');
             $table->foreign('id_institutional_reference')->references('id')->on('institutional_references');
-            $table->foreign('id_evaluations')->references('id')->on('evaluations');
+            $table->foreign('id_assignment_evaluation')->references('id')->on('assignments_evaluations');
             $table->foreign('id_update_histories')->references('id')->on('update_histories');
         });
     }

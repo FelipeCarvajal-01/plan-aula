@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var contentCompetitionOne = document.getElementById('textAreaCompetitionOne').value;
         var contentCompetitionTwo = document.getElementById('textAreaCompetitionTwo').value;
 
-        if (contentCompetitionOne.trim() === "" && contentCompetitionTwo.trim() === "") {
+        if (contentCompetitionOne.trim() === "" || contentCompetitionTwo.trim() === "") {
             // Mostrar alerta si está vacío
             Swal.fire({
                 icon: 'warning',
@@ -147,8 +147,8 @@ document.addEventListener('DOMContentLoaded', function () {
         var contentRaThree = document.getElementById('textAreaRaThree').value;
         var contentRaFour = document.getElementById('textAreaRaFour').value;
 
-        if (contentRaOne.trim() === "" && contentRaTwo.trim() === ""
-            && contentRaThree.trim() === "" && contentRaFour.trim() === "") {
+        if (contentRaOne.trim() === "" || contentRaTwo.trim() === ""
+            && contentRaThree.trim() === "" || contentRaFour.trim() === "") {
             // Mostrar alerta si está vacío
             Swal.fire({
                 icon: 'warning',

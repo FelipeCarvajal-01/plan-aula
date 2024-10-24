@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('learning_results', function (Blueprint $table) {
+        Schema::create('percentages', function (Blueprint $table) {
             $table->id();
-            $table->text('name_learning_result');
+            $table->string('name_percentage');
+            $table->integer('number_percentage');
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('learning_results');
+        Schema::dropIfExists('percentages');
     }
 };

@@ -18,7 +18,7 @@ class History extends Model
         'id_specific_objective',
         'id_general_reference',
         'id_institutional_reference',
-        'id_evaluations',
+        'id_assignment_evaluation',
         'id_update_histories',
     ];
 
@@ -48,7 +48,7 @@ class History extends Model
     }
     public function evaluations()
     {
-        return $this->belongsTo(Evaluation::class, 'id_evaluations');
+        return $this->belongsTo(AssignmentEvaluation::class, 'id_assignment_evaluation');
     }
     public function update_histories()
     {
