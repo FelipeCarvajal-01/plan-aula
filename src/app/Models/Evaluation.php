@@ -13,7 +13,7 @@ class Evaluation extends Model
 
     protected $fillable = [
         'name_evaluation',
-        'percentage',
+        'description',
         'id_type_course',
     ];
 

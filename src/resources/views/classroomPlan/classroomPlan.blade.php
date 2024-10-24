@@ -579,21 +579,76 @@
     <!-- End Card -->
 
     <!-- Card Evaluations -->
-    <div class="card" id="card-5">
+    <div class="card" id="card-6" style="display:none;">
         <div class="card-body">
 
-            <h4 class="card-title font-weight-bold text-primary">Evaluaciones</h4>
+            <h4 class="card-title font-weight-bold text-primary" style="margin-bottom: 10px;">Evaluaciones</h4>
 
-            <div class="form-group">
-                <label for="pillSelect">Pill Select</label>
-                <select class="form-control input-pill" id="pillSelect">
-                    <option disabled selected value="">Seleccione un programa</option>
-
-                </select>
+            <div class="text-right" style="margin-bottom: 10px;">
+                <button class="btn btn-primary btn-round" data-toggle="modal" data-target="#modalNewEvaluation">
+                    Nueva evaluación
+                </button>
             </div>
 
+            <!-- Row -->
+            <div class="table-responsive">
+                <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4" style="margin-bottom: 10px;">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                            <div class="dataTables_length" id="basic-datatables_length"><label>Show <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
+                                        <option value="10">10</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                    </select> entries</label></div>
+                        </div>
+                        <div class="col-sm-12 col-md-6">
+                            <div id="basic-datatables_filter" class="dataTables_filter"><label>Buscador:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables"></label></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end Row -->
+
+            <div class="table-responsive">
+                <table class="table table-head-bg-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">Seleccionar</th>
+                            <th scope="col">Evaluación</th>
+                            <th scope="col">Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($evaluations as $evaluation)
+                        <tr>
+                            <td><input type="checkbox" name="selectItem" value="{{ $evaluation->id }}"></td>
+                            <td>{{ $evaluation->name_evaluation }}</td>
+                            <td>{{ $evaluation->description ?? 'Sin descripción' }}</td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- End Pagination -->
+
             <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;"
-                id="confirmationEmptyFive">
+                id="confirmationEmptySix">
                 Guardar
             </button>
 
@@ -601,7 +656,46 @@
     </div>
     <!-- End Card -->
 
-    <!-- Modal -->
+    <!-- Card References -->
+    <div class="card" id="card-7" style="display:none;">
+        <div class="card-body">
+
+            <h4 class="card-title font-weight-bold text-primary" style="margin-bottom: 10px;">Referencias</h4>
+
+            <label for="pillInput">Ingrese la referencia institucional:</label>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="linkInstitutionalReferences" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="saveInstitutional">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <label for="pillInput">Ingrese la referencia general:</label>
+            <div class="form-group">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="linkGeneralReferences" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="saveGeneral">
+                            Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: 10px;"
+                id="confirmationEmptySeven">
+                Finalizar
+            </button>
+
+        </div>
+    </div>
+    <!-- End Card -->
+
+    <!-- Modal Confirmation -->
     <div class="modal fade" id="modalConfirmation" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -618,6 +712,37 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-primary" id="confirm-button" data-card="1">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
+    <!-- Modal Evaluation -->
+    <div class="modal fade bd-example-modal-lg" id="modalNewEvaluation" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Nueva evaluación</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="pillInput">Ingrese el nombre de la evaluación</label>
+                            <input type="text" class="form-control input-pill" id="pillInput" placeholder="Nombre de Evaluación">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Ingrese la descripción</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Guardar</button>
                 </div>
             </div>
         </div>
