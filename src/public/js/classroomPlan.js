@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Arreglo con los IDs de las cards
-    const cards = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'];
+    const cards = ['card-1', 'card-2', 'card-3', 'card-4', 'card-5', 'card-6', 'card-7'];
 
     // Inicialmente mostrar la primera card
     let currentCardIndex = 0;
@@ -104,7 +104,7 @@ document.getElementById('confirmationEmptyThree').addEventListener('click', func
     var contentThemeTwo = document.getElementById('textAreaThemeTwo').value;
     var contentThemeThree = document.getElementById('textAreaThemeThree').value;
     var contentThemeFour = document.getElementById('textAreaThemeFour').value;
-    var contenthemeFive= document.getElementById('textAreaThemeFive').value;
+    var contenthemeFive = document.getElementById('textAreaThemeFive').value;
 
     // Imprimir en consola
     console.log(contentThemeOne, contentThemeTwo, contentThemeThree, contentThemeFour, contenthemeFive)
@@ -121,7 +121,7 @@ document.getElementById('confirmationEmptyFour').addEventListener('click', funct
     var contentThemeSeven = document.getElementById('textAreaThemeSeven').value;
     var contentThemeEight = document.getElementById('textAreaThemeEight').value;
     var contentThemeNine = document.getElementById('textAreaThemeNine').value;
-    var contenthemeTen= document.getElementById('textAreaThemeTen').value;
+    var contenthemeTen = document.getElementById('textAreaThemeTen').value;
 
     // Imprimir en consola
     console.log(contentThemeSix, contentThemeSeven, contentThemeEight, contentThemeNine, contenthemeTen)
@@ -142,5 +142,67 @@ document.getElementById('confirmationEmptyFive').addEventListener('click', funct
     var contenthemeSixteen = document.getElementById('textAreaThemeSixteen').value;
 
     // Imprimir en consola
-    console.log(contentThemeEleven, contentThemeTwelve, contentThemeThirteen,contentThemeFourteen, contenthemeFifteen, contenthemeSixteen)
-}); 
+    console.log(contentThemeEleven, contentThemeTwelve, contentThemeThirteen, contentThemeFourteen, contenthemeFifteen, contenthemeSixteen)
+});
+
+document.getElementById('confirmationEmptySix').addEventListener('click', function () {
+    $('#modalConfirmation').modal('show');
+});
+
+document.getElementById('confirmationEmptySeven').addEventListener('click', function () {
+    $('#modalConfirmation').modal('show');
+});
+
+document.getElementById('saveInstitutional').addEventListener('click', function () {
+    // Capturar el valor del input de referencia institucional
+    const institutionalReference = document.getElementById('linkInstitutionalReferences').value;
+
+    // Puedes hacer algo con el valor, como mostrar una alerta
+    if (institutionalReference.trim() === "") {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Advertencia',
+            text: "No has ingresado ninguna referencia institucional",
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Entendido'
+        });
+    } else {
+        console.log("Referencia institucional guardada: " + institutionalReference)
+        Swal.fire({
+            icon: 'success',
+            title: 'Exito',
+            text: "Se ha ingresado correctamente la referencia institucional",
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Entendido'
+        });
+        // Limpiar el campo
+        document.getElementById('linkInstitutionalReferences').value = "";
+    }
+});
+
+document.getElementById('saveGeneral').addEventListener('click', function () {
+    // Capturar el valor del input de referencia general
+    const generalReference = document.getElementById('linkGeneralReferences').value;
+
+    // Puedes hacer algo con el valor, como mostrar una alerta
+    if (generalReference.trim() === "") {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Advertencia',
+            text: "No has ingresado ninguna referencia general",
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Entendido'
+        });
+    } else {
+        console.log("Referencia general guardada: " + generalReference)
+        Swal.fire({
+            icon: 'success',
+            title: 'Exito',
+            text: "Se ha ingresado correctamente la referencia general",
+            confirmButtonColor: '#3085d6',
+            confirmButtonText: 'Entendido'
+        });
+        // Limpiar el campo
+        document.getElementById('linkGeneralReferences').value = "";
+    }
+});
