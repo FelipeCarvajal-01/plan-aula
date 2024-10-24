@@ -198,9 +198,9 @@
                                     <div class="form-group form-group-default">
                                         <label>Rol</label>
                                         <select id="addRole" class="form-control" required>
-                                            <option value="">Seleccionar Rol</option>
-                                            <option value="1">Administrador</option>
-                                            <option value="2">Usuario</option>
+                                            @foreach($roles as $rol)
+                                            <option value="{{$rol->id}}">{{$rol->rol}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
