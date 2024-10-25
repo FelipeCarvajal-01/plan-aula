@@ -42,35 +42,9 @@
     <!-- end Card add row -->
 
     <div class="card-body">
-        <!-- Row -->
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <div class="dataTables_length" id="add-row_length">
-                    <label>Mostrar
-                        <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm">
-                            <option value="10">10</option>
-                            <option value="25">25</option>
-                            <option value="50">50</option>
-                            <option value="100">100</option>
-                        </select>
-                        Entradas
-                    </label>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <div id="add-row_filter" class="dataTables_filter text-right">
-                    <label>Buscar:
-                        <input type="search" class="form-control form-control-sm" placeholder="" aria-controls="add-row"
-                            style="max-width: 300px;">
-                    </label>
-                </div>
-            </div>
-        </div>
-        <!-- end Row -->
-
         <!-- User Management Table -->
         <div class="table table-head-bg-primary">
-            <table class="display table table-striped table-hover">
+            <table class="display table table-striped table-hover" id="multi-filter-select">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -83,21 +57,23 @@
                 <tbody>
                     @foreach ($users as $user)
                     <tr>
-                        <td>
+                        <td class="detalle-user" data-user-id="{{ $user->id }}">
                             <a href="{{ route('ListUsers')}}" class="text-dark">
                                 {{ $loop->iteration }}
                             </a>
                         </td>
-                        <td>
+                        <td class="detalle-user" data-user-id="{{ $user->id }}">
                             <a href="{{ route('ListUsers')}}" class="text-dark">
                                 {{ $user->name }}
                             </a>
                         </td>
-                        <td><a href="{{ route('ListUsers')}}" class="text-dark">
+                        <td class="detalle-user" data-user-id="{{ $user->id }}">
+                            <a href="{{ route('ListUsers')}}" class="text-dark">
                                 {{ $user->last_name }}
                             </a>
                         </td>
-                        <td><a href="{{ route('ListUsers')}}" class="text-dark">
+                        <td class="detalle-user" data-user-id="{{ $user->id }}">
+                            <a href="{{ route('ListUsers')}}" class="text-dark">
                                 {{ $user->email }}
                             </a>
                         </td>
@@ -120,24 +96,6 @@
 
         <!-- Agrega esto en tu sección <head> para cargar Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
-        <!-- Pagination -->
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-end">
-                <li class="page-item disabled">
-                    <span class="page-link" tabindex="-1">Anterior</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
-                    <span class="page-link">2 <span class="sr-only">(current)</span></span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Siguiente</a>
-                </li>
-            </ul>
-        </nav>
-        <!-- End of Pagination -->
 
         <!-- Modal -->
         <form method="POST" action="/user" id="userForm">
@@ -264,11 +222,18 @@
                                 </div>
                                 <div class="col-sm-12">
                                     <div class="form-group form-group-default">
+                                        <label>Contraseña</label>
+                                        <input id="updatePassword" type="password" class="form-control"
+                                            placeholder="Contraseña" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-default">
                                         <label>Rol</label>
                                         <select id="updateRole" class="form-control" required>
                                             <option value="">Seleccionar Rol</option>
                                             @foreach ($roles as $rol)
-                                            <option value="{{ $rol->id }}">{{ $rol->name }}</option>
+                                            <option value="{{ $rol->id }}">{{ $rol->rol }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -311,6 +276,7 @@
 
     <!-- scripts -->
     <script src="{{  asset('js/users.js') }}"></script>
+    <script src="{{  asset('js/functionTables.js') }}"></script>
     <!-- end scripts -->
 </div>
 

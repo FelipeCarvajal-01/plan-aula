@@ -1,31 +1,3 @@
-$(document).on("click", ".eliminar-user", function () {
-    const userId = $(this).data("user-id");
-    $("#modalDeleteUser" + userId).modal("show");
-});
-
-function buscar() {
-    var input = document.getElementById("searchInput");
-    var filtro = input.value.toUpperCase(); // Convertir filtro a mayúsculas
-    var tablas = document.querySelectorAll(".table-responsive table"); // Obtener todas las tablas dentro de contenedores .table-responsive
-
-    tablas.forEach(function (tabla) {
-        var tbody = tabla.getElementsByTagName("tbody")[0];
-        var filas = tbody.getElementsByTagName("tr"); // Obtener todas las filas de la tabla
-        for (var i = 0; i < filas.length; i++) {
-            var datos = filas[i].getElementsByTagName("td");
-            var coincide = false;
-            for (var j = 0; j < datos.length; j++) {
-                var dato = datos[j].innerText.toUpperCase(); // Convertir dato a mayúsculas
-                if (dato.includes(filtro)) {
-                    coincide = true;
-                    break;
-                }
-            }
-            filas[i].style.display = coincide ? "" : "none";
-        }
-    });
-}
-
 //Create
 document.addEventListener("DOMContentLoaded", function () {
     document
@@ -64,6 +36,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     .then((data) => {
                         if (data.success) {
                             alert("El usuario fue creado");
+                            Swal.fire({
+                                icon: "success",
+                                title: "Advertencia",
+                                text: "Se ha creado un nuevo usuario",
+                                confirmButtonColor: "#3085d6",
+                                confirmButtonText: "Entendido",
+                            });
                             location.reload();
                         } else {
                             alert("Error al crear el usuario: " + data.message);
@@ -79,4 +58,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Por favor complete todos los campos");
             }
         });
+});
+
+//Capture
+$(document).ready(function () {
+    // Usar delegación de eventos para capturar los clicks en .detalle-user
+    $(document).on("click", ".detalle-user", function () {
+        // Capturar el valor del atributo data-user-id
+        var userId = $(this).data("user-id");
+        console.log("ID del usuario: ", userId);
+    });
 });
