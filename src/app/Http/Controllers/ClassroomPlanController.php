@@ -54,19 +54,21 @@ class ClassroomPlanController extends Controller
         // Obtener el ID del curso desde la solicitud
         $component = $request->component;
 
-        // Buscar el curso en la base de datos con todas las relaciones necesarias
-        $curse = Course::with([
+        // Buscar todos los cursos en la base de datos con todas las relaciones necesarias
+        $curses = Course::with([
             'program.faculti',
             'component.field_study',
             'semester',
             'type_course'
         ])->where('id_component', $component)
-        ->find($component);
+            ->orderBy('id')
+            ->get(); // Obtener todos los cursos
 
-        // Buscar el curso en la base de datos con todas las relaciones necesarias
-        $classroomPlan = ClassroomPlan::with([
-            'course',
-        ])->find($component);
+        // Buscar los planes de aula relacionados con los cursos encontrados
+        $classroomPlan = ClassroomPlan::with(['course'])
+            ->where('id_course', $curses)// Usar pluck para obtener solo los IDs de los cursos
+            ->orderBy('id')
+            ->get(); // Obtener todos los planes de aula relacionados
 
         // Verificar si el curso fue encontrado
         if ($classroomPlan) {
@@ -100,5 +102,4 @@ class ClassroomPlanController extends Controller
             return response()->json(['error' => 'Curso no encontrado'], 404);
         }
     }
-    
 }

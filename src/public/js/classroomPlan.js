@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Realizar la petición AJAX
         $.ajax({
-            url: '/classroom-plan/visualize-info-course',
+            url: '/classroom-plan/list-courses',
             type: 'POST',
             data: {
                 component: component
@@ -174,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         var row = `
                         <tr>                
                             <td>${capitalizeText(classroom.course.name_curse)}</td>
+                            <td>${capitalizeText(classroom.course.id_component)}</td>
                         </tr>
                     `;
                     bodyComponent.append(row);

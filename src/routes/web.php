@@ -40,6 +40,7 @@ Route::get('/classroom-plan', [ClassroomPlanController::class, 'index'])->name('
 Route::get('/list-classroom-plan', [ListClassroomPlanController::class, 'index'])->name('listClassroomPlan');
 Route::post('/classroom-plan/visualize-info-course', [ClassroomPlanController::class, 'visualizeCourse'])->name('visualizeInfoCourse');
 Route::post('/classroom-plan/filters-course', [ClassroomPlanController::class, 'filtersAssignCourse'])->name('filtersAssignCourse');
+Route::post('/classroom-plan/list-courses', [ClassroomPlanController::class, 'listCourses'])->name('listCourses');
 
 // Rutas user
 Route::get('/user', [UserController::class, 'index'])->name('user');
