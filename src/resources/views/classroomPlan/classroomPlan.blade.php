@@ -47,17 +47,9 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label for="pillSelect">Seleccione un semestre</label>
-                <select class="form-control input-pill" id="pillSelectSemester" name="semester" required="required">
-                    <option disabled selected value="">Seleccione un semestre</option>
-                    @foreach ($semesters as $semester)
-                    <option value="{{ $semester->id }}">{{ $semester->name_semester }}</option>
-                    @endforeach
-                </select>
-            </div>
-
-            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalCourse">Seleccione el curso</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="filterCourse">
+                Seleccione el curso
+            </button>
 
         </div>
     </div>
@@ -71,7 +63,8 @@
 
             <!-- Table -->
             <div class="table-responsive">
-                <table class="table table-head-bg-primary table-hover" cellspacing="0" width="100%" style="margin-top: 10px;">
+                <table class="table table-head-bg-primary table-hover" cellspacing="0" width="100%" style="margin-top: 10px;"
+                    id="tableFieldStudy">
                     <thead>
                         <tr>
                             <th scope="col">Curso</th>
@@ -83,44 +76,7 @@
                             <th scope="col">Objetivo</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Curso
-                                </a>
-                            </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Campo
-                                </a>
-                            </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Componente
-                                </a>
-                            </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Semestre
-                                </a>
-                            </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Creditos
-                                </a>
-                            </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Tipo de curso
-                                </a>
-                            </td>
-                            <td class="detalle-docente" data-docente-id="1">
-                                <a href="" class="text-dark">
-                                    Objetivo
-                                </a>
-                            </td>
-                        </tr>
+                    <tbody id="bodyComponent">
                     </tbody>
                 </table>
             </div>
@@ -655,55 +611,22 @@
 
                     <!-- Table -->
                     <div class="table-responsive">
-                        <table id="multi-filter-select" class="table table-head-bg-primary table-hover" cellspacing="0" width="100%" style="margin-top: 10px;">
+                        <table class="table table-head-bg-primary table-hover" cellspacing="0" width="100%" style="margin-top: 10px;" id="multi-filter-select">
                             <thead>
                                 <tr>
                                     <th scope="col">Seleccionar</th>
                                     <th scope="col">Facultad</th>
                                     <th scope="col">Programa</th>
-                                    <th scope="col">Curso</th>
                                     <th scope="col">Campo</th>
                                     <th scope="col">Componente</th>
+                                    <th scope="col">Curso</th>
                                     <th scope="col">Semestre</th>
                                     <th scope="col">Creditos</th>
                                     <th scope="col">Tipo de curso</th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($courses as $course)
-                                <tr>
-                                    <td class="text-center">
-                                        <button type="button" class="btn btn-primary btn-sm courseSelect" data-id="{{ $course->id }}" data-dismiss="modal">
-                                            <i class="fas fa-check-circle"></i>
-                                        </button>
-                                    </td>
-                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
-                                        {{ $course->id }}
-                                    </td>
-                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
-                                        {{ $course->id_program }}
-                                    </td>
-                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
-                                        {{ $course->name_curse }}
-                                    </td>
-                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
-                                        {{ $course->id_component }}
-                                    </td>
-                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
-                                        {{ $course->id_component }}
-                                    </td>
-                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
-                                        {{ $course->id_semester }}
-                                    </td>
-                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
-                                        {{ $course->credit }}
-                                    </td>
-                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
-                                        {{ $course->id_type_course }}
-                                    </td>
-                                </tr>
-                                @endforeach
 
+                            </thead>
+                            <tbody id="tableCourses">
                             </tbody>
                         </table>
                     </div>

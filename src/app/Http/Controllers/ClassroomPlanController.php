@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ClassroomPlan;
 use App\Models\Course;
 use App\Models\Evaluation;
 use App\Models\Program;
@@ -23,25 +24,57 @@ class ClassroomPlanController extends Controller
         return view('classroomPlan.classroomPlan', compact('programs', 'evaluations', 'courses', 'semesters'));
     }
 
-    public function  filtersAssignCourse(Request $request)
+    public function filtersAssignCourse(Request $request)
     {
-        $program = $request->input('program');
+        // Obtener el programa de los datos de la solicitud
+        $program = $request->input('programs');
 
-        $listCurse = Course::where('id_programas', $program)
+        // Consultar los cursos asociados al programa especificado
+        $listCurse = Course::where('id_program', $program)
             ->with([
-                'program.faculti',
-                'component.field_study',
-                'semester',
-                'type_course'
-            ])->orderBy('id');
+                'program.faculti', // Cargar la relación con la facultad del programa
+                'component.field_study', // Cargar la relación con el campo de estudio del componente
+                'semester', // Cargar la relación con el semestre
+                'type_course' // Cargar la relación con el tipo de curso
+            ])->orderBy('id') // Ordenar los resultados por ID
+            ->get(); // Paginación según el número de filas por página
 
-        // Verificar si el curso fue encontrado
+        // Verificar si se encontraron cursos
         if ($listCurse) {
-            // Devolver el curso como respuesta en formato JSON
+            // Devolver la lista de cursos como respuesta en formato JSON
             return response()->json(['listCurse' => $listCurse]);
         } else {
-            // Enviar una respuesta de error si el curso no fue encontrado
+            // Enviar una respuesta de error si no se encontraron cursos
             return response()->json(['error' => 'Cursos no encontrados'], 404);
+        }
+    }
+
+    public function listCourses(Request $request)
+    {
+        // Obtener el ID del curso desde la solicitud
+        $component = $request->component;
+
+        // Buscar el curso en la base de datos con todas las relaciones necesarias
+        $curse = Course::with([
+            'program.faculti',
+            'component.field_study',
+            'semester',
+            'type_course'
+        ])->where('id_component', $component)
+        ->find($component);
+
+        // Buscar el curso en la base de datos con todas las relaciones necesarias
+        $classroomPlan = ClassroomPlan::with([
+            'course',
+        ])->find($component);
+
+        // Verificar si el curso fue encontrado
+        if ($classroomPlan) {
+            // Devolver el curso como respuesta en formato JSON
+            return response()->json(['classroomPlan' => $classroomPlan]);
+        } else {
+            // Enviar una respuesta de error si el curso no fue encontrado
+            return response()->json(['error' => 'Curso no encontrado'], 404);
         }
     }
 
@@ -67,4 +100,5 @@ class ClassroomPlanController extends Controller
             return response()->json(['error' => 'Curso no encontrado'], 404);
         }
     }
+    
 }
