@@ -174,10 +174,14 @@ document.addEventListener('DOMContentLoaded', function () {
                         var row = `
                         <tr>                
                             <td>${capitalizeText(classroom.course.name_curse)}</td>
-                            <td>${capitalizeText(classroom.course.id_component)}</td>
+                            <td>${capitalizeText(classroom.course.component.field_study.name_field_study)}</td>
+                            <td>${capitalizeText(classroom.course.component.name_component)}</td>
+                            <td>${capitalizeText(classroom.course.semester.name_semester)}</td>
+                            <td>${classroom.course.credit}</td>
+                            <td>${capitalizeText(classroom.course.type_course.name_type_course)}</td>
                         </tr>
                     `;
-                    bodyComponent.append(row);
+                        bodyComponent.append(row);
                     });
                 } else {
                     // Mostrar un mensaje si no se encontraron cursos

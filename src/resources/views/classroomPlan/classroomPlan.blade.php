@@ -73,7 +73,6 @@
                             <th scope="col">Semestre</th>
                             <th scope="col">Creditos</th>
                             <th scope="col">Tipo de curso</th>
-                            <th scope="col">Objetivo</th>
                         </tr>
                     </thead>
                     <tbody id="bodyComponent">
