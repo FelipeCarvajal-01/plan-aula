@@ -16,7 +16,7 @@ class Program extends Model
         'id_faculties',
     ];
 
-    public function faculties()
+    public function faculti()
     {
         return $this->belongsTo(Faculty::class, 'id_faculties');
     }

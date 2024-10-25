@@ -47,131 +47,17 @@
                 </select>
             </div>
 
-            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalCourse">Seleccione el curso</button>
-
-            <!-- Modal -->
-            <div class="modal fade bd-example-modal-lg" id="modalCourse" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Seleccion de curso</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                            <!-- Row -->
-                            <div class="table-responsive">
-                                <div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                    <div class="row">
-                                        <div class="col-sm-12 col-md-6">
-                                            <div class="dataTables_length" id="basic-datatables_length"><label>Show <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm">
-                                                        <option value="10">10</option>
-                                                        <option value="25">25</option>
-                                                        <option value="50">50</option>
-                                                        <option value="100">100</option>
-                                                    </select> entries</label></div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-6">
-                                            <div id="basic-datatables_filter" class="dataTables_filter"><label>Buscador:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables"></label></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end Row -->
-
-                            <!-- Table -->
-                            <div class="table-responsive">
-                                <table class="table table-head-bg-primary table-hover" cellspacing="0" width="100%" style="margin-top: 10px;">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Facultad</th>
-                                            <th scope="col">Programa</th>
-                                            <th scope="col">Curso</th>
-                                            <th scope="col">Campo</th>
-                                            <th scope="col">Componente</th>
-                                            <th scope="col">Semestre</th>
-                                            <th scope="col">Creditos</th>
-                                            <th scope="col">Tipo de curso</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td class="detalle-docente" data-docente-id="1">
-                                                <a href="" class="text-dark">
-                                                    Facultad
-                                                </a>
-                                            </td>
-                                            <td class="detalle-docente" data-docente-id="1">
-                                                <a href="" class="text-dark">
-                                                    Programa
-                                                </a>
-                                            </td>
-                                            <td class="detalle-docente" data-docente-id="1">
-                                                <a href="" class="text-dark">
-                                                    Curso
-                                                </a>
-                                            </td>
-                                            <td class="detalle-docente" data-docente-id="1">
-                                                <a href="" class="text-dark">
-                                                    Campo
-                                                </a>
-                                            </td>
-                                            <td class="detalle-docente" data-docente-id="1">
-                                                <a href="" class="text-dark">
-                                                    Componente
-                                                </a>
-                                            </td>
-                                            <td class="detalle-docente" data-docente-id="1">
-                                                <a href="" class="text-dark">
-                                                    Semestre
-                                                </a>
-                                            </td>
-                                            <td class="detalle-docente" data-docente-id="1">
-                                                <a href="" class="text-dark">
-                                                    Creditos
-                                                </a>
-                                            </td>
-                                            <td class="detalle-docente" data-docente-id="1">
-                                                <a href="" class="text-dark">
-                                                    Tipo de curso
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- End Table -->
-
-                            <!-- Pagination -->
-                            <nav aria-label="Page navigation example" style="margin-top: 20px;">
-                                <ul class="pagination justify-content-end">
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                    </li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <!-- End Pagination -->
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                            <button type="button" class="btn btn-primary" id="confirmSaveCard"
-                                data-ocultar="cardprofiles" data-mostrar="cardCompetencies" data-modal="modalprofiles">
-                                Aceptar
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="form-group">
+                <label for="pillSelect">Seleccione un semestre</label>
+                <select class="form-control input-pill" id="pillSelectSemester" name="semester" required="required">
+                    <option disabled selected value="">Seleccione un semestre</option>
+                    @foreach ($semesters as $semester)
+                    <option value="{{ $semester->id }}">{{ $semester->name_semester }}</option>
+                    @endforeach
+                </select>
             </div>
-            <!-- End Modal -->
+
+            <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#modalCourse">Seleccione el curso</button>
 
         </div>
     </div>
@@ -622,7 +508,9 @@
                     <tbody>
                         @foreach ($evaluations as $evaluation)
                         <tr>
-                            <td><input type="checkbox" name="selectItem" value="{{ $evaluation->id }}"></td>
+                            <td>
+                                <input type="checkbox" name="selectItem" value="{{ $evaluation->id }}">
+                            </td>
                             <td>{{ $evaluation->name_evaluation }}</td>
                             <td>{{ $evaluation->description ?? 'Sin descripción' }}</td>
                         </tr>
@@ -701,7 +589,8 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Advertencia</h5>
+                    <h5 class="card-title font-weight-bold text-primary">Advertencia</h5>
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -723,7 +612,8 @@
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle" style="font-size: 25px;">Nueva evaluación</h5>
+                    <h5 class="card-title font-weight-bold text-primary">Nueva evaluación</h5>
+
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -749,8 +639,88 @@
     </div>
     <!-- End Modal -->
 
+    <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="modalCourse" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="card-title font-weight-bold text-primary">Selección de curso</h5>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+                <div class="modal-body">
+
+                    <!-- Table -->
+                    <div class="table-responsive">
+                        <table id="multi-filter-select" class="table table-head-bg-primary table-hover" cellspacing="0" width="100%" style="margin-top: 10px;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Seleccionar</th>
+                                    <th scope="col">Facultad</th>
+                                    <th scope="col">Programa</th>
+                                    <th scope="col">Curso</th>
+                                    <th scope="col">Campo</th>
+                                    <th scope="col">Componente</th>
+                                    <th scope="col">Semestre</th>
+                                    <th scope="col">Creditos</th>
+                                    <th scope="col">Tipo de curso</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($courses as $course)
+                                <tr>
+                                    <td class="text-center">
+                                        <button type="button" class="btn btn-primary btn-sm courseSelect" data-id="{{ $course->id }}" data-dismiss="modal">
+                                            <i class="fas fa-check-circle"></i>
+                                        </button>
+                                    </td>
+                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
+                                        {{ $course->id }}
+                                    </td>
+                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
+                                        {{ $course->id_program }}
+                                    </td>
+                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
+                                        {{ $course->name_curse }}
+                                    </td>
+                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
+                                        {{ $course->id_component }}
+                                    </td>
+                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
+                                        {{ $course->id_component }}
+                                    </td>
+                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
+                                        {{ $course->id_semester }}
+                                    </td>
+                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
+                                        {{ $course->credit }}
+                                    </td>
+                                    <td class="detalle-course" data-course-id="{{ $course->id }}">
+                                        {{ $course->id_type_course }}
+                                    </td>
+                                </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- End Table -->
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->
+
     <!-- Scripts -->
     <script src="{{ asset('js/classroomPlan.js') }}"></script>
+    <script src="{{ asset('js/functionTables.js') }}"></script>
     <!-- End Scripts -->
 
 </div>
