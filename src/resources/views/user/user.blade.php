@@ -79,11 +79,11 @@
                         </td>
                         <td>
                             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                data-target="#ModalUpdate">
+                                data-target="#ModalUpdate" onclick="reloadModal({{  $user->id }})">
                                 <i class="fas fa-pencil-alt"></i>
                             </button>
                             <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                data-target="#exampleModalCenter">
+                                data-target="#exampleModalCenter" data-user-id="{{ $user->id }}">
                                 <i class="fas fa-times"></i>
                             </button>
                         </td>
@@ -261,9 +261,11 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">¿Desea eliminar este usuario?</div>
+                    <div class="modal-body">¿Desea eliminar este usuario?
+                        <input type="hidden" id="idEliminar"  value="">
+                    </div>
                     <div class="modal-footer">
-                        <button type="button" id="addRowButton" class="btn btn-primary"
+                        <button type="button" class="btn btn-primary"
                             data-dismiss="modal">Cancelar</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Eliminar</button>
                     </div>

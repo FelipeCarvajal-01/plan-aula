@@ -43,11 +43,11 @@ Route::post('/classroom-plan/filters-course', [ClassroomPlanController::class, '
 Route::post('/classroom-plan/list-courses', [ClassroomPlanController::class, 'listCourses'])->name('listCourses');
 
 // Rutas user
-Route::get('/user', [UserController::class, 'index'])->name('user');
-Route::post('/user', [UserController::class,'store']);
+Route::get('/user', [UserController::class, 'index'])->name('user');  
+Route::post('/user', [UserController::class, 'store']);  
+Route::get('/user/{id}', [UserController::class, 'show']);  
+Route::delete('/user/{id}', [UserController::class, 'destroy']); 
 Route::get('/ListUsers', [ListUsersController::class, 'index'])->name('ListUsers');
-// Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
-// Route::get('/user', [UserController::class,'store']);
 
 //Routes document
 Route::get('/document', [GenerateDocumentController::class, 'index'])->name('document');
