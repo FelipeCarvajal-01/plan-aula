@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function () {
     */
 
     var program; // DECLARA UNA VARIABLE PARA ALMACENAR EL SELECCIONADO
-    var semester; // DECLARA UNA VARIABLE PARA ALMACENAR EL SELECCIONADO
+    var cursoId;
+    var component;
 
     /*
         *
@@ -57,6 +58,82 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Función para visualizar un horario modal
+    function tableFiltersCourse(program) {
+
+        // Verificar si se han proporcionado programa, semestre y tipo de curso
+        if (program) {
+            // Mostrar el modal para seleccionar cursos
+            $('#modalCourse').modal('show');
+
+            // Realizar una solicitud AJAX para obtener los cursos según los parámetros proporcionados
+            $.ajax({
+                url: '/classroom-plan/filters-course', // URL 
+                method: 'POST', // Método de la solicitud: POST
+                data: {
+                    programs: program,
+                },
+                // Función que se ejecuta en caso de éxito en la solicitud
+                success: function (response) {
+
+                    // Procesar la respuesta del servidor y actualizar la tabla de cursos
+                    var courses = response.listCurse; // Obtener la lista de cursos de la respuesta
+
+                    var tableCourses = $('#tableCourses');
+                    tableCourses.empty();
+
+                    // Verificar si se encontraron cursos en la respuesta
+                    if (courses.length > 0) {
+                        courses.forEach(function (course) {
+                            var row = `
+                            <tr>
+                                <td class="text-center">
+                                    <button type="button" class="btn btn-primary btn-sm courseSelect" 
+                                        data-id="${course.id}" data-dismiss="modal">
+                                        <i class="fas fa-check-circle"></i>
+                                    </button>
+                                </td>
+                                <td>${capitalizeText(course.program.faculti.name_faculty)}</td>
+                                <td>${capitalizeText(course.program.name_program)}</td>
+                                <td>${capitalizeText(course.component.field_study.name_field_study)}</td>
+                                <td>${capitalizeText(course.component.name_component)}</td>
+                                <td>${capitalizeText(course.name_curse)}</td>
+                                <td>${capitalizeText(course.semester.name_semester)}</td>
+                                <td>${course.credit}</td>
+                                <td>${capitalizeText(course.type_course.name_type_course)}</td>
+                            </tr>
+                        `;
+                            tableCourses.append(row);
+                        });
+                    } else {
+                        // Mostrar un mensaje si no se encontraron cursos
+                        tableCourses.append('<tr><td colspan="6">No se encontraron cursos.</td></tr>');
+                    }
+                },
+                // Función que se ejecuta en caso de error en la solicitud
+                error: function (xhr, status, error) {
+                    // Imprimir mensajes de error en la consola
+                    console.error('Error al eliminar el grupo:', xhr);
+                    console.error('Estado:', status);
+                    console.error('Error:', error);
+                    console.error('Respuesta del servidor:', xhr.responseText);
+                    // Mostrar un mensaje de error en la tabla en caso de error en la solicitud
+                    $('#cursoTableBody').html('<tr><td colspan="6">Ocurrió un error al buscar los cursos. Inténtalo de nuevo.</td></tr>');
+                }
+            });
+        } else {
+            // Mostrar un mensaje de error si faltan opciones seleccionadas
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Por favor selecciona el programa para poder seleccionar un curso',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Entendido'
+            });
+            event.preventDefault();
+        }
+    }
+
     // Función genérica para validar campos vacíos y mostrar alerta o modal
     function validate(fields, alertMessage) {
         let hasEmptyField = fields.some(field => document.getElementById(field).value.trim() === "");
@@ -75,10 +152,51 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    function tableFieldStudy(component) {
+
+        // Realizar la petición AJAX
+        $.ajax({
+            url: '/classroom-plan/visualize-info-course',
+            type: 'POST',
+            data: {
+                component: component
+            },
+            success: function (response) {
+                // Procesar la respuesta del servidor y actualizar la tabla de cursos
+                var classroomPlans = response.classroomPlan; // Obtener la lista de cursos de la respuesta
+
+                var bodyComponent = $('#bodyComponent');
+                bodyComponent.empty();
+
+                // Verificar si se encontraron cursos en la respuesta
+                if (classroomPlans.length > 0) {
+                    classroomPlans.forEach(function (classroom) {
+                        var row = `
+                        <tr>                
+                            <td>${capitalizeText(classroom.course.name_curse)}</td>
+                        </tr>
+                    `;
+                    bodyComponent.append(row);
+                    });
+                } else {
+                    // Mostrar un mensaje si no se encontraron cursos
+                    bodyComponent.append('<tr><td colspan="6">No se encontraron cursos.</td></tr>');
+                }
+            },
+            // Función que se ejecuta en caso de error en la solicitud
+            error: function (xhr, status, error) {
+                // Imprimir mensajes de error en la consola
+                console.error('Error al obtener:', xhr);
+                console.error('Estado:', status);
+                console.error('Error:', error);
+            }
+        });
+    }
+
     // Función para mostrar la información del curso
     function visualizeInfoCourse(response) {
         console.log(response);  // Verificar el contenido del objeto
-        
+
         // Actualizar los campos en el área #course-info
         $('#nameFaculty').text(capitalizeText(response.curse.program.faculti.name_faculty));
         $('#nameProgram').text(capitalizeText(response.curse.program.name_program));
@@ -88,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function () {
         $('#nameSemester').text(capitalizeText(response.curse.semester.name_semester));
         $('#nameCredits').text(response.curse.credit);
         $('#nameCourseType').text(capitalizeText(response.curse.type_course.name_type_course));
-        
+
     }
 
     /*
@@ -99,8 +217,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     $('#multi-filter-select').on('click', '.courseSelect', function () {
         // OBTIENE EL VALOR DEL SEMESTRE SELECCIONADO
-        var cursoId = $(this).data('id');
-        console.log('course: ', cursoId) 
+        cursoId = $(this).data('id');
+        console.log('course: ', cursoId)
 
         // Realizar la petición AJAX
         $.ajax({
@@ -110,21 +228,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 cursoId: cursoId
             },
             success: function (response) {
-                
+                component = response.curse.id_component;
+                console.log('componente', component);
+
+                tableFieldStudy(component);
                 visualizeInfoCourse(response);
 
             },
             // Función que se ejecuta en caso de error en la solicitud
             error: function (xhr, status, error) {
                 // Imprimir mensajes de error en la consola
-                console.error('Error al obtener la cantidad de estudiantes:', xhr);
+                console.error('Error al obtener:', xhr);
                 console.error('Estado:', status);
                 console.error('Error:', error);
             }
         });
-        
+
     });
-    
+
     /*
         *
         * Event Listener
@@ -139,12 +260,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     });
 
-    document.getElementById('pillSelectSemester').addEventListener('change', function () {
-
-        // OBTIENE EL VALOR DEL SEMESTRE SELECCIONADO
-        semester = this.options[this.selectedIndex].value;
-        console.log('semester: ', semester)
-
+    // Escuchar el click en el botón de confirmación del modal
+    document.getElementById('filterCourse').addEventListener('click', function () {
+        tableFiltersCourse(program);
     });
 
     // Escuchar el click en el botón de confirmación del modal

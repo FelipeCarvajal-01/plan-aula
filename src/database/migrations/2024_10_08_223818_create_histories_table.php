@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_course');
-            $table->unsignedBigInteger('id_profiles_competencies_ra');
-            $table->unsignedBigInteger('id_general_objective');
-            $table->unsignedBigInteger('id_specific_objective');
-            $table->unsignedBigInteger('id_general_reference');
-            $table->unsignedBigInteger('id_institutional_reference');
-            $table->unsignedBigInteger('id_assignment_evaluation');
-            $table->unsignedBigInteger('id_update_histories');
+            $table->unsignedBigInteger('id_profiles_competencies_ra')->nullable();
+            $table->unsignedBigInteger('id_general_objective')->nullable();
+            $table->unsignedBigInteger('id_specific_objective')->nullable();
+            $table->unsignedBigInteger('id_general_reference')->nullable();
+            $table->unsignedBigInteger('id_institutional_reference')->nullable();
+            $table->unsignedBigInteger('id_assignment_evaluation')->nullable();
+            $table->unsignedBigInteger('id_update_histories')->nullable();
             $table->timestamps();
 
             //LLaves foraneas
