@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     .then((response) => response.json())
                     .then((data) => {
                         if (data.success) {
-                            alert("El usuario fue creado");
                             Swal.fire({
                                 icon: "success",
                                 title: "Advertencia",
@@ -45,7 +44,15 @@ document.addEventListener("DOMContentLoaded", function () {
                             });
                             location.reload();
                         } else {
-                            alert("Error al crear el usuario: " + data.message);
+                            Swal.fire({
+                                icon: "error Toast",
+                                title: "Advertencia",
+                                text:
+                                    "No se ha podidio crear el usuario" +
+                                    error.message,
+                                confirmButtonColor: "#3085d6",
+                                confirmButtonText: "Entendido",
+                            });
                         }
                     })
                     .catch((error) => {
@@ -69,3 +76,36 @@ $(document).ready(function () {
         console.log("ID del usuario: ", userId);
     });
 });
+
+// show data to modal
+async function reloadModal(id) {
+    try {
+        const response = await fetch(`/user/${id}`);
+
+        // Verifica si la respuesta es correcta
+        if (!response.ok) {
+            throw new Error(`Error en la solicitud: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Datos recibidos:", data); // Agregar para depuración
+
+        // Asegúrate de acceder a los datos de 'user'
+        const user = data.user;
+
+        // Asignación de valores de los campos
+        document.getElementById("updateName").value = user.name;
+        document.getElementById("updateLastName").value = user.last_name;
+        document.getElementById("updateEmail").value = user.email;
+        document.getElementById("updatePassword").value = user.password;
+        document.getElementById("updatePhone").value = user.phone;
+        document.getElementById("updateRole").value = user.id_rol;
+
+        // Mostrar el modal
+        document.getElementById("ModalUpdate").style.display = "block";
+    } catch (error) {
+        console.error("Error al cargar los datos del usuario:", error);
+    }
+}
+
+//delete

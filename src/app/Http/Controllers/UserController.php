@@ -18,6 +18,7 @@ class UserController extends Controller
         return view('user.user', compact('users', 'roles'));
     }
 
+    //Create
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -41,5 +42,45 @@ class UserController extends Controller
             'id_rol' => $request->input('id_rol'),
         ]);
         return response()->json(['success' => true, 'message' => 'Usuario creado'], 200);
+    }
+
+    //Read
+    public function show($id)
+    {
+        $User = User::find($id);
+
+        if (!$User) {
+            $data = [
+                'mesagge' => 'Usuario no encontrado',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+
+        $data = [
+            'user' => $User,
+            'status' => 200
+        ];
+        return response()->json($data, 200);
+    }
+
+    //Delete
+    public function destroy($id)
+    {
+        $User = User::find($id);
+        if (!$User) {
+            $data = [
+                'message' => 'Usuario no encontrado',
+                'status' => 404
+            ];
+            return response()->json($data, 404);
+        }
+        $User->delete();
+
+        $data = [
+            'message'=> 'Usuario eliminado',
+            'status'=> 200
+        ];
+        return response()->json($data, 200);
     }
 }
